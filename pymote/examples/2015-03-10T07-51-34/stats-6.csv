@@ -1,0 +1,7 @@
+Node,transmit,transmit_failed_power,received,received_failed_power,received_failed_loss
+       1,      13,       0,      87,       0,      12
+       2,      20,       0,       5,       0,       2
+       3,      19,       0,       2,       0,       0
+       4,      20,       0,       2,       0,       1
+       5,      19,       0,       2,       0,       0
+       6,      20,       0,       2,       0,       1

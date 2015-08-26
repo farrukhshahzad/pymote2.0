@@ -1,0 +1,829 @@
+2015-01-05 16:44:51 - DEBUG:[simulation.py] Simulation 0xad801c0 created successfully!.
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-01-05 16:44:51 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:44:51 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:44:53 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:44:53 - DEBUG:[simulation.py] Simulation 0xe02cd50 created successfully!.
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-01-05 16:44:53 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:44:53 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:44:54 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:44:55 - DEBUG:[simulation.py] Simulation 0x12a43260 created successfully!.
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-01-05 16:44:55 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:44:55 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:44:56 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:44:57 - DEBUG:[simulation.py] Simulation 0x134d3cd8 created successfully!.
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-01-05 16:44:57 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:44:57 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:44:59 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:44:59 - DEBUG:[simulation.py] Simulation 0x168c31c0 created successfully!.
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-01-05 16:44:59 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:44:59 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:01 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:01 - DEBUG:[simulation.py] Simulation 0x1a303490 created successfully!.
+2015-01-05 16:45:01 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:01 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:01 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:01 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:01 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:01 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:01 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:02 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:02 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-01-05 16:45:02 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-01-05 16:45:02 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:02 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:03 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:03 - DEBUG:[simulation.py] Simulation 0x1e3038a0 created successfully!.
+2015-01-05 16:45:03 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:03 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:03 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:03 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:03 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:04 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:04 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:04 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:04 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-01-05 16:45:04 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-01-05 16:45:04 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:04 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:05 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:06 - DEBUG:[simulation.py] Simulation 0x1eee32b0 created successfully!.
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:06 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:06 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:08 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:08 - DEBUG:[simulation.py] Simulation 0x2148d080 created successfully!.
+2015-01-05 16:45:08 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:08 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:08 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:08 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:08 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:08 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:08 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:09 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:09 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:09 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:10 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:11 - DEBUG:[simulation.py] Simulation 0x24a71a30 created successfully!.
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:11 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:11 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:13 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:13 - DEBUG:[simulation.py] Simulation 0x256555a8 created successfully!.
+2015-01-05 16:45:13 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:13 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:13 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:13 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:13 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:14 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:14 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:14 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:14 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:14 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:15 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:16 - DEBUG:[simulation.py] Simulation 0x12a63bc0 created successfully!.
+2015-01-05 16:45:16 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:16 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:16 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:16 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:16 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:16 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:17 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:17 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:17 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:17 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:19 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:19 - DEBUG:[simulation.py] Simulation 0x2ba38f08 created successfully!.
+2015-01-05 16:45:19 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:19 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:19 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:19 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:19 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:19 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:20 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:20 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:20 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:20 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:22 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:22 - DEBUG:[simulation.py] Simulation 0x2f085e90 created successfully!.
+2015-01-05 16:45:22 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:22 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:22 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:22 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:22 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:23 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:23 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:23 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:23 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:23 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:25 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:25 - DEBUG:[simulation.py] Simulation 0x32223238 created successfully!.
+2015-01-05 16:45:25 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:25 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:25 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:25 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:25 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:26 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:26 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:26 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:26 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:26 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:29 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:29 - DEBUG:[simulation.py] Simulation 0x3541d878 created successfully!.
+2015-01-05 16:45:29 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:29 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:29 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:29 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:29 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:29 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:30 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:30 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:30 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:30 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:32 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:32 - DEBUG:[simulation.py] Simulation 0x385b75d0 created successfully!.
+2015-01-05 16:45:32 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:32 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:32 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:32 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:32 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:33 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:33 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:33 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:33 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:33 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:35 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:35 - DEBUG:[simulation.py] Simulation 0x3b2b2260 created successfully!.
+2015-01-05 16:45:35 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:35 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:35 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:36 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:36 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:36 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:36 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:36 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:36 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:36 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:39 - INFO:[simulation.py] Resetting simulation.
+2015-01-05 16:45:39 - DEBUG:[simulation.py] Simulation 0x3b6ce9e0 created successfully!.
+2015-01-05 16:45:39 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-01-05 16:45:39 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-01-05 16:45:39 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-01-05 16:45:39 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-01-05 16:45:39 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-01-05 16:45:40 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-01-05 16:45:40 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-01-05 16:45:40 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-01-05 16:45:40 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-01-05 16:45:40 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-01-05 16:45:42 - INFO:[simulation.py] Resetting simulation.
+2015-02-23 06:26:48 - DEBUG:[simulation.py] Simulation 0xb04ccb0 created successfully!.
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 15 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Step 16 finished
+2015-02-23 06:26:48 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-02-23 06:26:48 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-02-23 06:26:49 - INFO:[simulation.py] Resetting simulation.
+2015-02-23 06:48:21 - DEBUG:[simulation.py] Simulation 0xb0424e0 created successfully!.
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-02-23 06:48:21 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-02-23 06:48:21 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-02-23 06:48:21 - INFO:[simulation.py] Resetting simulation.
+2015-02-23 07:01:27 - DEBUG:[simulation.py] Simulation 0xb03f508 created successfully!.
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 15 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 16 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 17 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Step 18 finished
+2015-02-23 07:01:27 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-02-23 07:01:27 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-02-23 07:01:27 - INFO:[simulation.py] Resetting simulation.
+2015-02-23 07:04:10 - DEBUG:[simulation.py] Simulation 0xb09e4e0 created successfully!.
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-02-23 07:04:10 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-02-23 07:04:10 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-02-23 07:04:10 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:06:01 - DEBUG:[simulation.py] Simulation 0xb04e558 created successfully!.
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:06:01 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:06:02 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:06:02 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:06:02 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:06:02 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:06:02 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:06:02 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:06:02 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:06:02 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:06:02 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:08:01 - DEBUG:[simulation.py] Simulation 0xb00c558 created successfully!.
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:08:01 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:08:02 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:08:02 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:08:02 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:08:02 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:08:02 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:08:02 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:10:47 - DEBUG:[simulation.py] Simulation 0xb062580 created successfully!.
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:10:47 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:10:47 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:10:47 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:29:39 - DEBUG:[simulation.py] Simulation 0xb077558 created successfully!.
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:29:39 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:29:39 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:29:40 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:34:05 - DEBUG:[simulation.py] Simulation 0xb038558 created successfully!.
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:34:05 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:34:05 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:36:55 - DEBUG:[simulation.py] Simulation 0xb09a558 created successfully!.
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:36:55 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:36:55 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:38:50 - DEBUG:[simulation.py] Simulation 0xb099558 created successfully!.
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:38:50 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:38:50 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:40:55 - DEBUG:[simulation.py] Simulation 0xb09a558 created successfully!.
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:40:55 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:40:55 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:40:56 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:41:35 - DEBUG:[simulation.py] Simulation 0xb034558 created successfully!.
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:41:35 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:41:35 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:41:35 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:43:41 - DEBUG:[simulation.py] Simulation 0xb07b580 created successfully!.
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:43:41 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:43:41 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:43:42 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 06:44:47 - DEBUG:[simulation.py] Simulation 0xb07b580 created successfully!.
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 06:44:47 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 06:44:47 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 06:44:48 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 08:27:41 - DEBUG:[simulation.py] Simulation 0xb051558 created successfully!.
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 08:27:41 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 08:27:41 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 08:28:22 - DEBUG:[simulation.py] Simulation 0xb06b558 created successfully!.
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 08:28:22 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 08:28:22 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 08:30:52 - DEBUG:[simulation.py] Simulation 0xb01d558 created successfully!.
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 08:30:52 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 08:30:53 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 08:30:53 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 08:30:53 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 08:30:53 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 08:30:53 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 08:30:53 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 08:32:16 - DEBUG:[simulation.py] Simulation 0xb01d558 created successfully!.
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 08:32:16 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 08:32:16 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 08:32:17 - INFO:[simulation.py] Resetting simulation.
+2015-03-09 08:35:24 - DEBUG:[simulation.py] Simulation 0xb044580 created successfully!.
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-09 08:35:24 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-09 08:35:24 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-09 08:35:25 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:29:55 - DEBUG:[simulation.py] Simulation 0xb0785f8 created successfully!.
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-10 07:29:55 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:29:55 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:29:56 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:32:50 - DEBUG:[simulation.py] Simulation 0xb0355f8 created successfully!.
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-10 07:32:50 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:32:50 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:32:51 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:33:20 - DEBUG:[simulation.py] Simulation 0xb0355f8 created successfully!.
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-10 07:33:20 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:33:20 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:33:21 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:34:15 - DEBUG:[simulation.py] Simulation 0xb0785f8 created successfully!.
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-10 07:34:15 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:34:15 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:34:16 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:47:31 - DEBUG:[simulation.py] Simulation 0xb074670 created successfully!.
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:47:31 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:47:32 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:47:32 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:47:32 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:47:32 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:47:32 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-10 07:47:32 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-10 07:47:32 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:47:32 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:47:32 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:35 - DEBUG:[simulation.py] Simulation 0xb08da08 created successfully!.
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 13 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Step 14 finished
+2015-03-10 07:51:35 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:35 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:36 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:36 - DEBUG:[simulation.py] Simulation 0xee3a990 created successfully!.
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:51:36 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:36 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:37 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:38 - DEBUG:[simulation.py] Simulation 0xef72698 created successfully!.
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 11 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Step 12 finished
+2015-03-10 07:51:38 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:38 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:39 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:39 - DEBUG:[simulation.py] Simulation 0x11dda0f8 created successfully!.
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:39 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:39 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:40 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:41 - DEBUG:[simulation.py] Simulation 0xf4a6e18 created successfully!.
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:41 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:41 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:42 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:43 - DEBUG:[simulation.py] Simulation 0x157785f8 created successfully!.
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:43 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:43 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:44 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:44 - DEBUG:[simulation.py] Simulation 0x17e95f58 created successfully!.
+2015-03-10 07:51:44 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:44 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:45 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:45 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:46 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:47 - DEBUG:[simulation.py] Simulation 0x1b830080 created successfully!.
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:47 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:48 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:48 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:48 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:48 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:49 - INFO:[simulation.py] Resetting simulation.
+2015-03-10 07:51:49 - DEBUG:[simulation.py] Simulation 0x1ed18288 created successfully!.
+2015-03-10 07:51:49 - DEBUG:[simulation.py] [Beacon] Step 1 finished
+2015-03-10 07:51:49 - DEBUG:[simulation.py] [Beacon] Step 2 finished
+2015-03-10 07:51:49 - DEBUG:[simulation.py] [Beacon] Step 3 finished
+2015-03-10 07:51:49 - DEBUG:[simulation.py] [Beacon] Step 4 finished
+2015-03-10 07:51:49 - DEBUG:[simulation.py] [Beacon] Step 5 finished
+2015-03-10 07:51:49 - DEBUG:[simulation.py] [Beacon] Step 6 finished
+2015-03-10 07:51:49 - DEBUG:[simulation.py] [Beacon] Step 7 finished
+2015-03-10 07:51:50 - DEBUG:[simulation.py] [Beacon] Step 8 finished
+2015-03-10 07:51:50 - DEBUG:[simulation.py] [Beacon] Step 9 finished
+2015-03-10 07:51:50 - DEBUG:[simulation.py] [Beacon] Step 10 finished
+2015-03-10 07:51:50 - DEBUG:[simulation.py] [Beacon] Algorithm finished
+2015-03-10 07:51:50 - INFO:[simulation.py] Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+2015-03-10 07:51:51 - INFO:[simulation.py] Resetting simulation.
