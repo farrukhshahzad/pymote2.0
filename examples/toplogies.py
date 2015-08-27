@@ -6,7 +6,7 @@ from numpy import sign, sqrt, array, pi, sin, cos
 from numpy.random import rand
 
 
-class Star(NetworkGenerator):
+class Toplogy(NetworkGenerator):
 
     def generate_star_ehwsn_network(self, center=None, x_radius=100, y_radius=100, sector=1.0, clusters=1, is_random=0):
         """
@@ -73,10 +73,6 @@ class Star(NetworkGenerator):
                     ang = n *2*pi/n_nets * sector + pi*(1.0 - sector)
                     x = mid[0] + cos(ang)*(x_radius + rn[0]*is_random)
                     y = mid[1] + sin(ang)*(y_radius + rn[0]*is_random)
-                    # if (x > w):
-                    #     x = w - x % w
-                    # if (y > h):
-                    #     y = h - x % h
                     net.add_node(node, pos=(x, y))
 
         return net
@@ -141,5 +137,67 @@ class Star(NetworkGenerator):
                         net.add_node(node, pos=(center[0] + cos(ang)*x_radius + rn[0],
                                                 center[1] + sin(ang)*y_radius + rn[1]),
                                                 ori=ang)
+
+        return net
+
+    def generate_grid_network(self, randomness=0):
+        """
+        Generates network where nodes are located approximately homogeneous in a grid
+
+        Parameter randomness controls random perturbation of the nodes, it is
+        given as a part of the environment size.
+
+        """
+        net = Network(**self.kwargs)
+        h, w = net.environment.im.shape
+        area = h * w
+        sq = int(round(sqrt(self.n_count)))
+        nr = sqrt(self.n_count) * area/self.n_count/h
+        k = 0
+        print nr, sq
+        for x in range(self.n_count/sq + 1):
+            for y in range(self.n_count/sq):
+                k += 1
+                rn = rand(2)*randomness
+                node = Node(**self.kwargs)
+                net.add_node(node, pos=(int((x + rn[0])*nr), int((y + rn[1])*nr)))
+                if (k >= self.n_count):
+                    return net
+
+        return net
+
+    def generate_manual_network(self, randomness=0):
+
+        from pymote.conf import global_settings
+        from pymote.environment import Environment2D
+
+        self.n_count = 0
+
+        net = Network(environment=Environment2D(shape=(200,200)))
+        h, w = net.environment.im.shape
+
+        node = Node(node_type='C')
+        net.add_node(node, pos=(h/2, w/2))
+        self.n_count +=1
+
+        node = Node(node_type='N')
+        net.add_node(node, pos=(h/3, w/3))
+        self.n_count +=1
+
+        node = Node(node_type='N', mobile_type=2, power_type=2)
+        net.add_node(node, pos=(2*h/3, 2*w/3))
+        self.n_count +=1
+
+        node = Node(node_type='B')
+        net.add_node(node, pos=(50, 150))
+        self.n_count +=1
+
+        #auto add a node 'N'
+        net.add_node(pos=(150, 50))
+        self.n_count +=1
+
+        #auto add a node 'N' at random location
+        net.add_node()
+        self.n_count +=1
 
         return net

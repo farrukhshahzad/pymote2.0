@@ -195,33 +195,6 @@ class NetworkGenerator(object):
         self.n_count = self.n_max = self.n_min = n
         return self.generate_random_network(net)
 
-    def generate_ring_network(self, center=None, x_radius=100, y_radius=100, sector=1.0, n_ring=5):
-        """
-        Generates network where nodes are located approximately homogeneous.
-
-        Parameter randomness controls random perturbation of the nodes, it is
-        given as a part of the environment size.
-
-        """
-        net = self._create_modify_network()
-        h, w = net.environment.im.shape
-        if center is None:
-            center = (h/2, w/2)  # middle
-        net = Network(**self.kwargs)
-        rn = (rand(2) - 0.5)*(x_radius + y_radius)/2
-
-        for _n in range(self.n_count/n_ring):
-                    node = Node(commRange=self.comm_range, **self.kwargs)
-                    ang = (_n + 1)*2*pi/self.n_count * sector  # `+ pi*(1.0 - sector)
-                    for _r in range(n_ring):
-                        net.add_node(node, pos=(center[0] + cos(ang)*x_radius + rn[0],
-                                                center[1] + sin(ang)*y_radius + rn[1]),
-                                                ori=ang)
-
-        #net2 = complete_bipartite_graph(1,n,create_using=Network())
-        #return net
-        return net   #self._create_modify_network(net)
-
 def generate_mesh_positions(env, n):
     """
     Strategy: put rectangle mesh with intersections distance d above

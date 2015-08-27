@@ -228,10 +228,11 @@ class Network(Graph):
         # calculate label delta based on network size
         label_delta = self.get_size()/max([30, len(self)])
         label_delta = self.get_size()/30
-        dpi = 90
-        size =  self._environment.im.shape[0] + 50, self._environment.im.shape[1] + 50
-        fig_size = (tuple(array(size)/ dpi))
-
+        dpi = 100
+        h, w = self.environment.im.shape
+        size = w, h
+        scale = 600/w
+        fig_size = (tuple(array(size)*scale/ dpi))
         # figsize in inches
         # default matplotlibrc is dpi=80 for plt and dpi=100 for savefig
         fig = plt.figure(figsize=fig_size, dpi=dpi, frameon=False)
