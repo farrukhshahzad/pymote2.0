@@ -19,6 +19,7 @@ LOG_DIR = os.path.join(path, "logs")
 
 DATETIME_DIR = os.path.join(path, date2str)
 
+
 def get_path(d, f, prefix=None):
     if not os.path.exists(d):
         os.mkdir(d)

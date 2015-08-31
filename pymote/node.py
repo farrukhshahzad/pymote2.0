@@ -26,7 +26,7 @@ class Node(object):
         self._compositeSensor = CompositeSensor(self, sensors or
                                                 settings.SENSORS)
         self.network = network
-        self._commRange = commRange or settings.COMM_RANGE
+        self._commRange = commRange  # or settings.COMM_RANGE
         self.id = self.__class__.cid
         self.__class__.cid += 1
         self._inboxDelay = True

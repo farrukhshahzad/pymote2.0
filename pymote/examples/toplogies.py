@@ -5,7 +5,7 @@ from pymote import *
 from numpy import sign, sqrt, array, pi, sin, cos
 from numpy.random import rand
 
-
+tests = 1
 class Toplogy(NetworkGenerator):
 
     def generate_star_ehwsn_network(self, center=None, x_radius=100, y_radius=100, sector=1.0, clusters=1, is_random=0):
@@ -13,7 +13,7 @@ class Toplogy(NetworkGenerator):
         Generates network where nodes are located around a center/coordinator node.
         Parameter is_random controls random perturbation of the nodes
         """
-
+        self.name = "Star EHWSN"
         net = Network(**self.kwargs)
         h, w = net.environment.im.shape
         if center is None:
@@ -52,7 +52,7 @@ class Toplogy(NetworkGenerator):
         Generates network where nodes are located around a center/coordinator node.
         Parameter is_random controls random perturbation of the nodes
         """
-
+        self.name = "Star"
         net = Network(**self.kwargs)
         h, w = net.environment.im.shape
         if center is None:
@@ -85,6 +85,7 @@ class Toplogy(NetworkGenerator):
         given as a part of the environment size.
 
         """
+        self.name = "Ring"
         net = Network(**self.kwargs)
         h, w = net.environment.im.shape
         if center is None:
@@ -110,6 +111,7 @@ class Toplogy(NetworkGenerator):
         given as a part of the environment size.
 
         """
+        self.name = "Two Ring"
         net = Network(**self.kwargs)
         h, w = net.environment.im.shape
         dir = 1.0  # ccw
@@ -148,6 +150,7 @@ class Toplogy(NetworkGenerator):
         given as a part of the environment size.
 
         """
+        self.name = "Grid"
         net = Network(**self.kwargs)
         h, w = net.environment.im.shape
         area = h * w
@@ -173,7 +176,7 @@ class Toplogy(NetworkGenerator):
 
         self.n_count = 0
 
-        net = Network(environment=Environment2D(shape=(200,200)))
+        net = Network(environment=Environment2D(shape=(200,200)), commRange=75)
         h, w = net.environment.im.shape
 
         node = Node(node_type='C')
