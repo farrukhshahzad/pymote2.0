@@ -48,6 +48,7 @@ class NetworkGenerator(object):
         >>> net = net_gen.generate()
 
         """
+        self.name = "Unknown"
         self.n_count=n_count if n_count else settings.N_COUNT
         if self.n_count<n_min or self.n_count>n_max:
             raise NetworkGeneratorException('Number of nodes must be between '
@@ -156,6 +157,7 @@ class NetworkGenerator(object):
         distance to all other nodes and sets that distance as new commRange.
 
         """
+        self.name = "Neighbourhood"
         net = self._create_modify_network()
 
         max_distances = []
@@ -176,6 +178,7 @@ class NetworkGenerator(object):
         given as a part of the environment size.
 
         """
+        self.name = "Homogeneous"
         net = self._create_modify_network()
         n = len(net)
         h, w = net.environment.im.shape

@@ -39,6 +39,7 @@ class Network(Graph):
         self.algorithmState = {'index': 0, 'step': 1, 'finished': False}
         self.outbox = []
         self.networkRouting = networkRouting
+        self.comm_range = kwargs.pop('commRange', settings.COMM_RANGE)
         logger.info("Instance of Network has been initialized with %s" % self.propagation)
 
     def subgraph(self, nbunch):
@@ -134,7 +135,10 @@ class Network(Graph):
 
         """
         if (not node):
-            node = Node(commRange=commRange)
+            node = Node(commRange=commRange or self.comm_range)
+        if not node.commRange:
+            node.commRange = commRange or self.comm_range
+
         assert(isinstance(node, Node))
         if not node.network:
             node.network = self
@@ -212,12 +216,25 @@ class Network(Graph):
         fig = self.get_fig(*args, **kwargs)
         fig.show()
 
-    def savefig(self, fname='network.png', figkwargs={}, *args, **kwargs):
-        self.get_fig(*args, **kwargs).savefig(fname, **figkwargs)
+    def savefigpdf(self, fname='network', figkwargs={}, *args, **kwargs):
+        from matplotlib.backends.backend_pdf import PdfPages
+        with PdfPages(fname+".pdf") as pdf:
+            pdf.savefig(self.get_fig(*args, **kwargs))
+            d = pdf.infodict()
+            d['Title'] = kwargs.pop('title', fname)
+            d['Author'] = kwargs.pop('author', 'Farrukh Shahzad')
+            d['Subject'] = kwargs.pop('subject','PhD Dissertation Nov 2015 - KFUPM')
+
+
+    def savefig(self, fname='network', format='pdf', figkwargs={}, *args, **kwargs):
+        if 'pdf' in format:
+            self.savefigpdf(fname, figkwargs={}, *args, **kwargs)
+        else:
+            self.get_fig(*args, **kwargs).savefig(fname+'.'+format, format=format, **figkwargs)
 
     def get_fig(self, title="Topology", x_label="X-axis", y_label="Y-axis",
                 positions=None, edgelist=None, nodeColor='b',
-                show_labels=True):
+                show_labels=True, **kwargs):
         try:
             from matplotlib import pyplot as plt
         except ImportError:
@@ -266,7 +283,7 @@ class Network(Graph):
             else:
                 node_colors.append('light'+colors.get(n.type, 'pink'))
 
-        nx.draw_networkx_edges(net, pos, alpha=0.5, edgelist=edgelist, style='dashed', edge_color='b')
+        nx.draw_networkx_edges(net, pos, alpha=0.5, edgelist=edgelist, style='dotted', edge_color='b')
         nx.draw_networkx_nodes(net, pos, node_size=node_sizes,
                                node_color=node_colors, cmap='YlOrRd')
         if show_labels:
