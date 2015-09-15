@@ -7,7 +7,7 @@ from numpy import array, sqrt, power
 from pymote import *
 from pymote.conf import global_settings
 from pymote.utils import plotter
-from pymote.utils.filing import get_path, date2str,\
+from pymote.utils.filing import get_path, load_metadata, \
      DATA_DIR, TOPOLOGY_DIR, CHART_DIR, DATETIME_DIR
 from pymote.sensor import TruePosSensor
 from pymote.networkgenerator import NetworkGenerator
@@ -16,6 +16,8 @@ from toplogies import Toplogy
 
 #seed(100)  # to get same random sequence for each run
 
+meta = load_metadata()
+print meta['name'], meta['version']
 # Network/Environment setup
 global_settings.ENVIRONMENT2D_SHAPE = (600, 600)
 net = Network()
@@ -56,8 +58,7 @@ for node in net.nodes():
         node.compositeSensor = (TruePosSensor,)
         node.type = 'C'  # Anchors
         anchpositions.append({'x': net.pos[node][0], 'y': net.pos[node][1],
-                              'name': str(node.id), 'color': 'red',
-                              'marker': {'symbol': 'circle', 'radius': '8'}})
+                              'name': str(node.id)})
     else:
         positions.append({'x': net.pos[node][0], 'y': net.pos[node][1],
                           'name': 'Node: ' + str(node.id)})
@@ -86,15 +87,17 @@ plotter.gethtmlScatter(xpositions, [anchpositions, positions, newpos],
                 fname="Topology-"+net.name, folder=TOPOLOGY_DIR,
                 xlabel="X", ylabel="Y", labels=['Anchor','Regular','Localized'],
                 title="Topology-"+net.name, open=1, range={'xmin':0, 'ymin':0, 'xmax': w, 'ymax': h},
-                comment=comments,
-                plot_options=["color: 'red', visible: false,", "color: 'blue',", "color: 'pink', visible: false,"])
+                comment=comments, show_range=node.commRange,
+                plot_options=["color: 'red', visible: false,", "color: 'blue',", "color: 'green', visible: false,"])
 
 plotter.gethtmlLine(range(1,len(xpositions)), [xpositions, xestpositions, deltapos],
                 fname="X-"+net.name, folder=TOPOLOGY_DIR,
                 xlabel="Node", ylabel="X-Coordinate", labels=['Actual', 'Estimated', 'Error'],
                 title="X-"+net.name, open=1,
                 comment=comments,
-                plot_options=["color: 'red',", "color: 'blue',", "type: 'areaspline', color: 'grey', visible: false,"])
+                plot_options=["color: 'red','marker': {'symbol': 'circle', 'radius': '8'}",
+                              "color: 'blue',",
+                              "type: 'areaspline',color: 'grey', visible: false,"])
 
 dt = [range(1,len(xpositions)+1), xpositions, xestpositions, deltapos]
 np.savetxt(get_path(TOPOLOGY_DIR, net.name+".csv"),

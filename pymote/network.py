@@ -1,6 +1,6 @@
 import inspect
 from pymote.logger import logger
-from pymote.conf import settings
+from pymote.conf import settings, global_settings
 from networkx import Graph, is_connected
 import networkx as nx
 from environment import Environment
@@ -39,8 +39,8 @@ class Network(Graph):
         self.algorithmState = {'index': 0, 'step': 1, 'finished': False}
         self.outbox = []
         self.networkRouting = networkRouting
-        self.comm_range = kwargs.pop('commRange', settings.COMM_RANGE)
-        logger.info("Instance of Network has been initialized with %s" % self.propagation)
+        self.comm_range = kwargs.pop('commRange', None) or settings.COMM_RANGE
+        logger.info("Instance of Network has been initialized with %s (%s)" % (self.propagation, self.comm_range))
 
     def subgraph(self, nbunch):
         """ Returns Graph instance with nbunch nodes, see subnetwork. """
@@ -230,9 +230,9 @@ class Network(Graph):
         if 'pdf' in format:
             self.savefigpdf(fname, figkwargs={}, *args, **kwargs)
         else:
-            self.get_fig(*args, **kwargs).savefig(fname+'.'+format, format=format, **figkwargs)
+            self.get_fig(*args, **kwargs).savefig(fname+'.'+format, format=format, transparent=True, **figkwargs)
 
-    def get_fig(self, title="Topology", x_label="X-axis", y_label="Y-axis",
+    def get_fig(self, title="Topology", xlabel="X-axis", ylabel="Y-axis",
                 positions=None, edgelist=None, nodeColor='b',
                 show_labels=True, **kwargs):
         try:
@@ -252,13 +252,20 @@ class Network(Graph):
         fig_size = (tuple(array(size)*scale/ dpi))
         # figsize in inches
         # default matplotlibrc is dpi=80 for plt and dpi=100 for savefig
-        fig = plt.figure(figsize=fig_size, dpi=dpi, frameon=False)
+        fig = plt.figure(num=0, figsize=fig_size, dpi=dpi, frameon=False)
+        #fig.set_facecolor("#000000")
+        plt.axis('off')
+        plt.clf()
         plt.imshow(self._environment.im, cmap='binary_r', vmin=0,
                    origin='lower')
         plt.title(title)
-        plt.xlabel(x_label)
-        plt.ylabel(y_label)
-        plt.grid()
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        if kwargs.pop('grid', False):
+            plt.grid()
+        #plt.axis('tight')
+        plt.xlim(-0.01*w, 1.01*w)
+        plt.ylim(-0.01*h , 1.01*h)
         if positions:
             # truncate positions to [x, y], i.e. lose theta
             for k, v in positions.items():
@@ -273,22 +280,29 @@ class Network(Graph):
         label_pos = {}
         node_sizes = []
         node_colors = []
-        colors = {'C': 'red', 'B': 'green', 'N': 'cyan'}
-        sizes = {'C': 50, 'B': 70, 'N': 30}
+        colors = {'C': 'red', 'B': 'green', 'N': 'blue'}
+        sizes = {'C': 80, 'B': 100, 'N': 30}
+        lab_off = {'C': 0, 'B': 0, 'N': 1}
+        coord = []
         for n in net.nodes():
-            label_pos[n] = pos[n].copy() - label_delta
+            label_pos[n] = pos[n].copy() - lab_off[n.type]*label_delta
             node_sizes.append(sizes.get(n.type, 20))
             if n.power.have_energy():
                 node_colors.append(colors.get(n.type, 'pink'))
             else:
                 node_colors.append('light'+colors.get(n.type, 'pink'))
+            if n.type == 'C':
+                coord.append(n)
+            #else:
+            #    self.labels[n] = ''
 
-        nx.draw_networkx_edges(net, pos, alpha=0.5, edgelist=edgelist, style='dotted', edge_color='b')
-        nx.draw_networkx_nodes(net, pos, node_size=node_sizes,
-                               node_color=node_colors, cmap='YlOrRd')
+        nx.draw_networkx_edges(net, pos, edgelist=edgelist, style='dotted', edge_color='#9C9C9C')
+        nx.draw_networkx_nodes(net, pos, node_size=node_sizes, node_color=node_colors, node_shape='s')
+        nx.draw_networkx_nodes(net, pos, nodelist=coord, node_shape='o', node_size=130)
         if show_labels:
-            nx.draw_networkx_labels(net, label_pos, labels=net.labels, font_size=10)
+            nx.draw_networkx_labels(net, label_pos, labels=net.labels, font_size=6, font_color='g')
 
+        #print plt.xlim()
         return fig
 
     def recalculate_edges(self, nodes=[]):

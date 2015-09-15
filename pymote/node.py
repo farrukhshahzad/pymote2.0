@@ -126,7 +126,7 @@ class Node(object):
                 rx_ok = self.network.propagation.is_rx_ok(d=d, prt=prt)
 
                 logger.debug('Node %d received message %s [%d] - %s m (%s)' %
-                             (self.id, message.data, msg_len, d, rx_ok))
+                             (self.id, message.data, msg_len, d, PropagationModel.pw_to_dbm(prt)))
 
                 if rx_ok:
                     self.n_received += 1

@@ -1,5 +1,6 @@
 from PySide.QtCore import QThread, SIGNAL
 import logging
+import datetime
 from pymote.network import Network
 from pymote.algorithm import NetworkAlgorithm
 from pymote.algorithm import NodeAlgorithm
@@ -12,6 +13,7 @@ class Simulation(QThread):
     def __init__(self, network, logLevel=None, **kwargs):
         assert(isinstance(network, Network))
         self._network = network
+        self.sim_start = self.sim_end = None
         self.stepsLeft = 0
         self.logger = logging.getLogger('pymote.simulation')
         self.logger.level = logLevel or logging.DEBUG
@@ -26,6 +28,7 @@ class Simulation(QThread):
     def run_all(self, stepping=False):
         """ Run simulation form beginning. """
         self.reset()
+        self.sim_start = datetime.datetime.utcnow()
         self.logger.info('Simulation %s starts running.' % hex(id(self)))
         if stepping:
             self.run(1)
@@ -34,6 +37,7 @@ class Simulation(QThread):
                              'stepping.')
         else:
             self.run()
+            self.sim_end = datetime.datetime.utcnow()
             self.logger.info('Simulation end.')
 
     def run(self, steps=0):
@@ -44,10 +48,12 @@ class Simulation(QThread):
         If steps > 0 simulation is in stepping mode.
         If steps > number of steps to finish current algorithm it finishes it.
         """
+        self.sim_start = datetime.datetime.utcnow()
         self.stepsLeft = steps
         while True:
             algorithm = self.network.get_current_algorithm()
             if not algorithm:
+                self.sim_end = datetime.datetime.utcnow()
                 self.logger.info('Simulation has finished. There are no '
                                  'algorithms left to run. '
                                  'To run it from the start use sim.reset().')

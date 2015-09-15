@@ -23,7 +23,7 @@ class PropagationModel(object):
     SIGMA_DB = 4  # Gaussian noise standard deviation
     REF_DIST = 1  # Reference Distance
 
-    P_RX_THRESHOLD = -90  # dbm
+    P_RX_THRESHOLD = -70  # dbm
     MAX_DISTANCE_NO_LOSS = 10  # m
 
     P_TX = 1.0  # Watts

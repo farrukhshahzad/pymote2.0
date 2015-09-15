@@ -1,0 +1,5 @@
+[meta]
+version = 2.0.0
+description = A package for Wireless Sensor/Adhoc Network Simulation
+name = pymote2.0
+long_name = Pymote2.0

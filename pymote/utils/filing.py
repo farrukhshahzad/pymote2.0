@@ -5,6 +5,7 @@ Helper module to organize files in appropriate folders
 """
 import os
 import datetime
+import ConfigParser
 
 date2str = datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%dT%H-%M-%S")
 path = os.path.abspath(os.path.curdir)
@@ -28,3 +29,25 @@ def get_path(d, f, prefix=None):
     else:
         return os.path.join(d,f)
 
+
+def load_config(ini_file):
+    config = ConfigParser.ConfigParser()
+    read_files = config.read(ini_file)
+    if len(read_files) == 0:
+        raise Exception("Failed to read %s" % ini_file)
+    meta = {}
+    for item in config.options("meta"):
+        meta[item] = config.get("meta", item)
+    return meta
+
+
+def load_metadata():
+    # default used in case can't read METADATA
+    meta = {"name": "pymote", "version": "2.0.x"}
+    try:
+        path = os.path.dirname(os.path.abspath(__file__))
+        ini_file = os.path.join(path, '../..', 'METADATA')
+        meta.update(load_config(ini_file))
+    except:
+        pass
+    return meta
