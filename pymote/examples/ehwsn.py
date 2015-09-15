@@ -6,7 +6,7 @@ from pymote import *
 from pymote.conf import global_settings
 from beacon import Beacon, MAX_TRIES
 from pymote import propagation
-from toplogies import Star
+from toplogies import Toplogy
 from pymote.utils import plotter
 from pymote.utils.filing import get_path, date2str,\
      DATA_DIR, TOPOLOGY_DIR, CHART_DIR, DATETIME_DIR
@@ -31,7 +31,7 @@ for n in n_range:
 
     # network topology setup
     Node.cid = 1
-    net_gen = Star(degree=2, n_count=n)
+    net_gen = Toplogy(degree=2, n_count=n)
     net = net_gen.generate_star_ehwsnnetwork(
         x_radius=x_radius,
         y_radius=y_radius,

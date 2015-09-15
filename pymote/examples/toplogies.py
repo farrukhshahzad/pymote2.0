@@ -14,7 +14,7 @@ class Toplogy(NetworkGenerator):
         Parameter is_random controls random perturbation of the nodes
         """
         self.name = "Star EHWSN"
-        net = Network(**self.kwargs)
+        net = Network(commRange=self.comm_range, **self.kwargs)
         h, w = net.environment.im.shape
         if center is None:
             center = (h/2, w/2)  # middle
@@ -53,7 +53,7 @@ class Toplogy(NetworkGenerator):
         Parameter is_random controls random perturbation of the nodes
         """
         self.name = "Star"
-        net = Network(**self.kwargs)
+        net = Network(commRange=self.comm_range, **self.kwargs)
         h, w = net.environment.im.shape
         if center is None:
             center = (h/2, w/2)  # middle
@@ -86,7 +86,7 @@ class Toplogy(NetworkGenerator):
 
         """
         self.name = "Ring"
-        net = Network(**self.kwargs)
+        net = Network(commRange=self.comm_range, **self.kwargs)
         h, w = net.environment.im.shape
         if center is None:
             center = (h/2, w/2)  # middle
@@ -112,7 +112,7 @@ class Toplogy(NetworkGenerator):
 
         """
         self.name = "Two Ring"
-        net = Network(**self.kwargs)
+        net = Network(commRange=self.comm_range, **self.kwargs)
         h, w = net.environment.im.shape
         dir = 1.0  # ccw
         if center is None:
@@ -142,7 +142,59 @@ class Toplogy(NetworkGenerator):
 
         return net
 
-    def generate_grid_network(self, randomness=0):
+    def generate_grid_network(self, name=None, randomness=0, cut_shape=None):
+        """
+        Generates network where nodes are located approximately homogeneous in a grid
+
+        Parameter randomness controls random perturbation of the nodes, it is
+        given as a part of the environment size.
+
+        """
+        self.name = name or "Grid"
+        net = Network(commRange=self.comm_range, **self.kwargs)
+        h, w = net.environment.im.shape
+        area = h * w
+        sq = int(round(sqrt(self.n_count)))
+        nr = 1.04 * (sqrt(self.n_count) * area / self.n_count / h)
+        k = 0
+        cut_area = 0
+        if cut_shape:
+            for box in cut_shape:
+                cut_area += (box[1][0] - box[0][0])*(box[0][1] - box[1][1])
+        self.area = area - cut_area
+        done = False
+        for x in range(0, self.n_count / sq + 1):
+            if done:
+                break
+            for y in range(0, self.n_count / sq):
+                rn = rand(2) * randomness
+                xpos = round((x + rn[0]) * nr, 2)
+                ypos = round((y + rn[1]) * nr, 2)
+                inside = True
+                if cut_shape:
+                    for box in cut_shape:
+                        #print box[0], box[1],  xpos, ypos
+                        if xpos >= box[0][0] and xpos <= box[1][0] and \
+                                        ypos <= box[0][1] and ypos >= box[1][1]:
+                            #print "not in"
+                            inside = False
+                if inside:
+                    k += 1
+                    node = Node(**self.kwargs)
+                    net.add_node(node, pos=(xpos, ypos))
+
+                if (k >= self.n_count):
+                    done = True
+                    break
+
+        if self.degree:
+            self.n_max = len(net)
+            net = self.generate_random_network(net)  # adjust for degree by changing comm_range
+
+        self.net_density = 1.0 * len(net)/self.area
+        return net
+
+    def generate_web_network(self, randomness=0):
         """
         Generates network where nodes are located approximately homogeneous in a grid
 
@@ -151,7 +203,7 @@ class Toplogy(NetworkGenerator):
 
         """
         self.name = "Grid"
-        net = Network(**self.kwargs)
+        net = Network(commRange=self.comm_range, **self.kwargs)
         h, w = net.environment.im.shape
         area = h * w
         sq = int(round(sqrt(self.n_count)))
@@ -175,7 +227,7 @@ class Toplogy(NetworkGenerator):
         from pymote.environment import Environment2D
 
         self.n_count = 0
-
+        self.name = "Manual"
         net = Network(environment=Environment2D(shape=(200,200)), commRange=75)
         h, w = net.environment.im.shape
 

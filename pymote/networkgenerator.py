@@ -91,8 +91,8 @@ class NetworkGenerator(object):
                 if len(net)<self.n_max:
                     node = Node(**self.kwargs)
                     net.add_node(node)
-                    logger.debug("Added node, number of nodes: %d"
-                                 % len(net))
+                    logger.debug("Added node, number of nodes: %d (%d)"
+                                 % (len(net), self.n_max))
                 elif not self.comm_range:
                     for node in net.nodes():
                         node.commRange += step
@@ -106,6 +106,8 @@ class NetworkGenerator(object):
                     logger.debug("Removed node, nodes left: %d"
                                  % len(net))
                 elif not self.comm_range:
+                    if abs(step) >= net.nodes()[0].commRange:
+                        step /= 4
                     for node in net:
                         node.commRange += step
                     logger.debug("Decreased commRange to %d"
@@ -120,12 +122,15 @@ class NetworkGenerator(object):
             logger.debug("Not connected")
             return round(0.2*cr)
         elif self.degree:
-            diff = self.degree-net.avg_degree()
-            if (abs(diff)<0.5):
+            diff = (self.degree-net.avg_degree())/self.degree
+            if (abs(diff)<0.05):
                 return 0
-            logger.debug("Degree not satisfied %f" % net.avg_degree())
-            diff = sign(diff)*min(abs(diff), 7)
-            return round((sign(diff)*(round(diff))**2)*cr/100)
+
+            #diff = sign(diff)*min(abs(diff), 7)
+            #adj = round((sign(diff)*(round(diff))**2)*cr/35)
+            adj = sign(diff)/4.0
+            logger.debug("Degree not satisfied %f, %s, %s" % (net.avg_degree(), diff, adj))
+            return adj
         return 0
 
     def generate_random_network(self, net=None):
@@ -142,6 +147,7 @@ class NetworkGenerator(object):
             if len(steps)>1000:
                 break
             if steps[-1]==0:
+                self.net_density = 1.0 * len(net)/self.area
                 return net
 
         logger.error("Could not generate connected network with given "
@@ -184,7 +190,7 @@ class NetworkGenerator(object):
         h, w = net.environment.im.shape
         assert net.environment.dim==2  # works only for 2d environments
         size = w
-
+        self.area = w * h
         positions = generate_mesh_positions(net.environment, n)
         for i in range(n):
             pos = array([-1, -1])  # some non space point
