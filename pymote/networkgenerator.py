@@ -70,6 +70,8 @@ class NetworkGenerator(object):
         if (method):
             self.generate = self.__getattribute__("generate_" + method)
         self.kwargs = kwargs
+        self.area = 0
+        self.net_density = 0
 
     def _create_modify_network(self, net=None, step=1):
         """Helper method for creating new or modifying given network.
@@ -87,6 +89,7 @@ class NetworkGenerator(object):
                 node = Node(commRange=self.comm_range, **self.kwargs)
                 net.add_node(node)
         else:
+            print "here2-" + str(step)
             if step>0:
                 if len(net)<self.n_max:
                     node = Node(**self.kwargs)
@@ -101,7 +104,8 @@ class NetworkGenerator(object):
                 else:
                     return None
             else:
-                if len(net)>self.n_min and len(net)>1:
+                print "here3-" + str(self.n_min)
+                if len(net) > self.n_min and len(net) > 1:
                     net.remove_node(net.nodes()[0])
                     logger.debug("Removed node, nodes left: %d"
                                  % len(net))
@@ -123,12 +127,12 @@ class NetworkGenerator(object):
             return round(0.2*cr)
         elif self.degree:
             diff = (self.degree-net.avg_degree())/self.degree
-            if (abs(diff)<0.05):
+            if (abs(diff)<0.1):
                 return 0
 
             #diff = sign(diff)*min(abs(diff), 7)
             #adj = round((sign(diff)*(round(diff))**2)*cr/35)
-            adj = sign(diff)/4.0
+            adj = sign(diff)/5.0
             logger.debug("Degree not satisfied %f, %s, %s" % (net.avg_degree(), diff, adj))
             return adj
         return 0
@@ -141,6 +145,7 @@ class NetworkGenerator(object):
         steps = [0]
         while True:
             net = self._create_modify_network(net, steps[-1])
+            print "here"
             if not net:
                 break
             steps.append(self._are_conditions_satisfied(net))
@@ -165,7 +170,10 @@ class NetworkGenerator(object):
         """
         self.name = "Neighbourhood"
         net = self._create_modify_network()
-
+        n = len(net)
+        w, h = net.environment.im.shape
+        self.area = w * h
+        self.net_density = 1.0 * n/self.area
         max_distances = []
         for node in net:
             distances = [sqrt(sum((net.pos[node]-net.pos[neighbor])**2))\
@@ -176,7 +184,7 @@ class NetworkGenerator(object):
             node.commRange = min_distance+1
         return net
 
-    def generate_homogeneous_network(self, randomness=0.11):
+    def generate_homogeneous_network(self, name=None, randomness=0.11):
         """
         Generates network where nodes are located approximately homogeneous.
 
@@ -184,13 +192,15 @@ class NetworkGenerator(object):
         given as a part of the environment size.
 
         """
-        self.name = "Homogeneous"
+        self.name = name or "Homogeneous"
         net = self._create_modify_network()
         n = len(net)
         h, w = net.environment.im.shape
         assert net.environment.dim==2  # works only for 2d environments
         size = w
         self.area = w * h
+        self.net_density = 1.0 * n/self.area
+
         positions = generate_mesh_positions(net.environment, n)
         for i in range(n):
             pos = array([-1, -1])  # some non space point
@@ -201,7 +211,7 @@ class NetworkGenerator(object):
         #TODO: this is not intuitive but generate_random network with net
         # given as argument will check if conditions are satisfied and act
         # accordingly, to change only commRange set limits to number of nodes
-        self.n_count = self.n_max = self.n_min = n
+        #self.n_count = self.n_max = self.n_min = n
         return self.generate_random_network(net)
 
 def generate_mesh_positions(env, n):

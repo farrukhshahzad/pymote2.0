@@ -33,11 +33,6 @@ class Node(object):
         self.type = node_type or 'N'
         self.power = EnergyModel(power_type=power_type)
         self.mobility = MobilityModel(mobile_type=mobile_type)
-        self.n_received = 0
-        self.n_received_failed_power = 0
-        self.n_received_failed_loss = 0
-        self.n_transmitted = 0
-        self.n_transmitted_failed_power = 0
 
         self.reset()
 
@@ -56,6 +51,11 @@ class Node(object):
         self.energy = []
         self.distance = []
         self.snr = []
+        self.n_received = 0
+        self.n_received_failed_power = 0
+        self.n_received_failed_loss = 0
+        self.n_transmitted = 0
+        self.n_transmitted_failed_power = 0
 
     def send(self, message):
         """

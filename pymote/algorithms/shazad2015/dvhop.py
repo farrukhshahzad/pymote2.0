@@ -1,4 +1,4 @@
-from pymote.algorithms.niculescu2003.floodingupdate import FloodingUpdate
+from pymote.algorithms.shazad2015.floodingupdate import FloodingUpdate
 from numpy import concatenate, array, sqrt, dot
 
 
@@ -25,6 +25,7 @@ class DVHop(FloodingUpdate):
         if not self.dataKey in node.memory:
             node.memory[self.dataKey] = {}
         updated_data = {}
+        maxHop = self.maxHop or DVHop.MAX_HOP
         for landmark, landmark_data in message.data.items():
             # skip if landmark in message data is current node
             if landmark == node:
@@ -33,7 +34,7 @@ class DVHop(FloodingUpdate):
             # hopcount is smaller than previous minimum
             if (not landmark in node.memory[self.dataKey] or \
                     landmark_data[2] < node.memory[self.dataKey][landmark][2]) and \
-                    landmark_data[2] < DVHop.MAX_HOP:
+                    landmark_data[2] < maxHop:
                 node.memory[self.dataKey][landmark] = array(landmark_data)
                 # increase hopcount
                 landmark_data[2] += 1

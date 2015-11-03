@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Effect of Anchor ratio on Energy Consumption</title>
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+  <style type='text/css'>
+  </style>
+
+<script type='text/javascript'>//<![CDATA[
+
+var chart;
+var w;
+$(function () {
+    w = $('#container').width()
+    $('#container').highcharts({
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            filename: "Effect of Anchor ratio on Energy Consumption"
+        },
+        legend: {
+            margin: 0, x: 80, y: 100, floating: true, layout: 'vertical', align: 'left',
+            verticalAlign: 'top', shadow: true, backgroundColor: '#FFFFFF',
+            title: {
+                //text: 'Farrukh Shahzad<br/>PhD, KFUPM<br/>Nov. 2015</span>',
+                style: {fontStyle: 'italic', fontSize: '10px'}
+            }
+        },
+        chart: {
+            zoomType: 'xy', panning: true, panKey: 'shift',
+            type: "spline"
+        },
+        title: {
+            text: "Effect of Anchor ratio on Energy Consumption"
+        },
+        subtitle: {
+            text: ""
+        },
+        tooltip: {
+            borderRadius: 10,
+            crosshairs: [{width: 1, color: 'gray',  dashStyle: 'shortdot'}, {width: 1, color: 'gray',  dashStyle: 'shortdot'}],
+            //pointFormat: 'X: {point.x:.1f}, Y: {point.y:.1f}',
+            //headerFormat: '<b>{point.key}</b>, {series.name}<br />',
+            shared: false
+        },
+        xAxis: [{ // Primary yAxis
+            //minRange : 5,
+            categories: [5, 10, 15, 20],
+            lineColor: '#000000',
+            gridLineWidth: 0,
+            //lineWidth: 1,
+            //tickInterval: 5,
+            min: null, max: null,
+            title: { text: "Anchor ratio (%)", y: -5, style: {color: '#000000'}}
+        }],
+        yAxis: [{ // Primary yAxis
+            lineWidth: 1,
+            lineColor: '#000000',
+            gridLineWidth: 0,
+            minPadding: 0.0,
+            maxPadding: 0.0,
+            min: 0, max: 600,
+            title: {text: "Energy Consumption per node (mJ)", x: 2, style: {color: '#000000'}}
+        },
+        //    {opposite: true, lineWidth: 1,title: {text: "No. of Tx/node"} }
+        ],
+        series: [
+            {
+                name: "H-Shaped",
+                //marker: {'symbol': 'circle', 'radius': '4'},
+                //color: 'red',
+                lineWidth:1,
+                data: [24.4, 82, 184.5, 306.9]
+                
+            },
+            {
+                name: "C-Shaped",
+                //marker: {'symbol': 'square', 'radius': '4'},
+                color: 'blue',
+                lineWidth:1,
+                data: [20, 68.5, 145.57, 236.78],
+            },
+            {
+                name: "Randomized Grid",
+                //marker: {'symbol': 'square', 'radius': '4'},
+                color: 'blue',
+                lineWidth:1,
+                data: [58.99, 175.31, 369.42, 597.1],
+            }
+     ]
+    },
+    function (chart) { // on complete
+    
+    });
+});
+//]]>
+
+</script>
+
+</head>
+<body>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<table border="0" align="center"><tr><td>
+<span id="container" style="height: 600px; margin: auto; min-width: 600px; max-width: 600px"></span>
+
+</td></tr></table>
+
+</body>
+</html>
