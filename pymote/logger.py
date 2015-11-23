@@ -7,12 +7,12 @@ LOG_CONFIG = {
               {
                  'pymote':
                  {
-                    'level': 'DEBUG',
+                    'level': 'INFO',
                     'handlers': ['fileHandler', 'consoleHandler']
                  },
                  'pymote.simulation':
                  {
-                    'level': 'DEBUG',
+                    'level': 'INFO',
                     'handlers': ['simFileHandler'],
                     'propagate': 1
                  }

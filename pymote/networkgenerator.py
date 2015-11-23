@@ -11,7 +11,7 @@ from itertools import product
 
 class NetworkGenerator(object):
 
-    def __init__(self, n_count=None, n_min=0, n_max=Inf, connected=True,
+    def __init__(self, n_count=None, n_min=0, n_max=32000, connected=True,
                  degree=None, comm_range=None, method=None,
                  **kwargs):
         """
@@ -72,6 +72,7 @@ class NetworkGenerator(object):
         self.kwargs = kwargs
         self.area = 0
         self.net_density = 0
+        #logger.info()
 
     def _create_modify_network(self, net=None, step=1):
         """Helper method for creating new or modifying given network.
@@ -95,7 +96,7 @@ class NetworkGenerator(object):
                     node = Node(**self.kwargs)
                     net.add_node(node)
                     logger.debug("Added node, number of nodes: %d (%d)"
-                                 % (len(net), self.n_max))
+                                 % (len(net), int(self.n_max)))
                 elif not self.comm_range:
                     for node in net.nodes():
                         node.commRange += step
