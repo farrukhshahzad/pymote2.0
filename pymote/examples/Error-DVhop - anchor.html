@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>DVhop Errors with Anchors - Line plots</title>
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+  <style type='text/css'>
+  </style>
+
+<script type='text/javascript'>//<![CDATA[
+
+var chart;
+var w;
+$(function () {
+    w = $('#container').width()
+    $('#container').highcharts({
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            filename: "Effect of Anchor ratio on Localization Accuracy"
+        },
+        legend: {
+            margin: 0, x: 30, y: 100, floating: true, layout: 'vertical', align: 'center',
+            verticalAlign: 'top', shadow: true, backgroundColor: '#FFFFFF',
+            title: {
+                text: 'Farrukh Shahzad<br/>PhD, KFUPM<br/>Nov. 2015</span>',
+                style: {fontStyle: 'italic', fontSize: '10px'}
+            }
+        },
+        chart: {
+            zoomType: 'xy', panning: true, panKey: 'shift',
+            type: "spline"
+        },
+        title: {
+            text: "Effect of Anchor ratio on Localization Accuracy"
+        },
+        subtitle: {
+            text: ""
+        },
+        tooltip: {
+            borderRadius: 10,
+            crosshairs: [{width: 1, color: 'gray',  dashStyle: 'shortdot'}, {width: 1, color: 'gray',  dashStyle: 'shortdot'}],
+            //pointFormat: 'X: {point.x:.1f}, Y: {point.y:.1f}',
+            //headerFormat: '<b>{point.key}</b>, {series.name}<br />',
+            shared: false
+        },
+        xAxis: [{ // Primary yAxis
+            //minRange : 5,
+            categories: [5, 10, 15, 20],
+            lineColor: '#000000',
+            gridLineWidth: 0,
+            //lineWidth: 1,
+            //tickInterval: 5,
+            min: null, max: null,
+            title: { text: "Anchor ratio (%)", y: -5, style: {color: '#000000'}}
+        }],
+        yAxis: [{ // Primary yAxis
+            lineWidth: 1,
+            lineColor: '#000000',
+            gridLineWidth: 0,
+            minPadding: 0.0,
+            maxPadding: 0.0,
+            min: 0, max: 60,
+            title: {text: "Localization Error (m)", x: 2, style: {color: '#000000'}}
+        },
+        //    {opposite: true, lineWidth: 1,title: {text: "No. of Tx/node"} }
+        ],
+        series: [
+            {
+                name: "H-Shaped Avg. Error",
+                //marker: {'symbol': 'circle', 'radius': '4'},
+                //color: 'red',
+                lineWidth:1,
+                data: [7.37, 5.4, 5.64, 5.11]
+                
+            },
+            {
+                name: "H-Shaped Max. Error",
+                //marker: {'symbol': 'circle', 'radius': '4'},
+                //color: 'red',
+                lineWidth:1,
+                data: [38.3, 25.45, 26.18, 28.73]
+            },
+            {
+                name: "C-Shaped Avg. Error",
+                //marker: {'symbol': 'square', 'radius': '4'},
+                color: 'blue',
+                lineWidth:1,
+                data: [14.46, 14.33, 14.24, 14.24],
+            },
+            {
+                name: "C-Shaped Max. Error",
+                //marker: {'symbol': 'square', 'radius': '4'},
+                color: 'blue',
+                lineWidth:1,
+                data: [53, 57, 58, 52.3],
+            },
+            {
+                name: "Randomized Grid Avg. Error",
+                //marker: {'symbol': 'square', 'radius': '4'},
+                color: 'blue',
+                lineWidth:1,
+                data: [2.77, 2.47, 2.51, 2.36],
+            },
+            {
+                name: "Randomized Grid  Max. Error",
+                //marker: {'symbol': 'square', 'radius': '4'},
+                color: 'blue',
+                lineWidth:1,
+                data: [8.7, 8.1, 6.6, 7.7],
+            },
+     ]
+    },
+    function (chart) { // on complete
+    
+    });
+});
+//]]>
+
+</script>
+
+</head>
+<body>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<table border="0" align="center"><tr><td>
+<span id="container" style="height: 600px; margin: auto; min-width: 600px; max-width: 600px"></span>
+
+</td></tr></table>
+
+</body>
+</html>

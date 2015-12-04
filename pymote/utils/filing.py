@@ -8,6 +8,7 @@ import datetime
 import ConfigParser
 
 date2str = datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%dT%H-%M-%S")
+
 path = os.path.abspath(os.path.curdir)
 
 DATA_DIR = os.path.join(path, "data")
@@ -51,3 +52,6 @@ def load_metadata():
     except:
         pass
     return meta
+
+def getDateStr(date):
+    return datetime.datetime.strftime(date, "%Y-%m-%dT%H-%M-%S")

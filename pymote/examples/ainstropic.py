@@ -20,7 +20,7 @@ from pymote.networkgenerator import NetworkGenerator
 from pymote.algorithms.niculescu2003.dvhop import DVHop
 
 
-seed(123)  # to get same random sequence for each run
+seed(100)  # to get same random sequence for each run
 
 # Network/Environment setup
 #net = Network(environment=Environment2D(shape=(200,200)), commRange=75)
@@ -87,7 +87,7 @@ net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
 net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=False, format="pdf")
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
 
 print na, avg_deg, node.commRange
 net.reset()
@@ -99,7 +99,7 @@ net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1,
 anchors = [10, 30, 42, 84, 119, 110]
 f_anchors = (int)(100 / p_anchors)
 for node in net.nodes():
-    if node.id in anchors:  # anchor nodes
+    if node.id % f_anchors == 0:  # anchor nodes
         node.compositeSensor = (TruePosSensor,)
         node.type = 'C'  # Anchors
 
@@ -138,7 +138,7 @@ net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
 net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=False, format="pdf")
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
 
 print net.__len__(), avg_deg, node.commRange
 net.reset()
@@ -163,7 +163,7 @@ net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
 net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=False, format="pdf")
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
 
 print net.__len__(), avg_deg, node.commRange
 net.reset()
@@ -188,7 +188,7 @@ net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
 net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=False, format="pdf")
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
 
 print net.__len__(), avg_deg, node.commRange
 net.reset()
@@ -213,15 +213,15 @@ net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
 net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=False, format="pdf")
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
 
 print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
 net.reset()
 
 Node.cid = 1
-net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="Randomized Grid", randomness=0.5)
-
+#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+net = net_gen.generate_grid_network(name="I-shaped Grid", randomness=0.2,
+                                    cut_shape=[[(0,5*h/6), (w/3,h/6)], [(2*w/3,5*h/6), (w, h/6)]])
 f_anchors = (int)(100 / p_anchors)
 for node in net.nodes():
     if node.id % f_anchors == 0:  # anchor nodes
@@ -237,16 +237,16 @@ net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
 net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=False, format="pdf")
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
 
-print na, avg_deg, node.commRange, net_gen.area, net_gen.net_density
+print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
 net.reset()
-
 
 Node.cid = 1
-net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="Grid", randomness=0.1)
-
+#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+net = net_gen.generate_grid_network(name="Plus-shaped Grid", randomness=0.2,
+                                    cut_shape=[[(0,h), (w/3, h/6)],[(3*w/3,h), (w, h/6)],
+                                    [(0,5*h/6), (w/3, 0)], [(2*w/3,5*h/6), (w, 0)]])
 f_anchors = (int)(100 / p_anchors)
 for node in net.nodes():
     if node.id % f_anchors == 0:  # anchor nodes
@@ -262,10 +262,11 @@ net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
 net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=False, format="pdf")
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
 
-print na, avg_deg, node.commRange, net_gen.area, net_gen.net_density
+print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
 net.reset()
+
 
 # Manual network topology setup
 # Node.cid = 1

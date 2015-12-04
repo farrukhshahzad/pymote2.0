@@ -1,4 +1,5 @@
-from pymote.algorithms.niculescu2003.floodingupdate import FloodingUpdate
+from pymote.algorithms.shazad2015.floodingupdate import FloodingUpdate
+from pymote.logger import logger
 from numpy import array, sqrt, average, dot, diag, ones
 from numpy import linalg
 
@@ -18,7 +19,7 @@ class Trilaterate(FloodingUpdate):
         return node.memory[self.truePositionKey] is not None  # if landmark
 
     def initiator_data(self, node):
-        return node.memory[self.hopsizeKey]
+        return node.memory.get(self.hopsizeKey)
 
     def handle_flood_message(self, node, message):
         if self.hopsizeKey in node.memory:
@@ -31,6 +32,7 @@ class Trilaterate(FloodingUpdate):
         TRESHOLD = .1
         MAX_ITER = 10
         landmarks = []
+
         # get landmarks with hopsize data
         if self.dataKey in node.memory:
             landmarks = node.memory[self.dataKey].keys()
@@ -55,11 +57,11 @@ class Trilaterate(FloodingUpdate):
                 pos_correction = dot(linalg.inv(dot(dot(J.T, W), J)),
                                      dot(dot(J.T, W), range_correction))
                 pos = pos + pos_correction
-                # print pos
-                # print pos_correction
+                logger.info("Est. %s, %s, %s" %(node.id, pos, pos_correction))
                 counter += 1
                 if sqrt(sum(pos_correction ** 2)) < \
                    TRESHOLD or counter >= MAX_ITER:
+                    logger.info("Trilaterate break %s" % counter)
                     break
-            if counter < MAX_ITER:
+            if counter <= MAX_ITER:
                 node.memory[self.positionKey] = pos

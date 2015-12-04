@@ -293,14 +293,14 @@ class Network(Graph):
                 node_colors.append('light'+colors.get(n.type, 'pink'))
             if n.type == 'C':
                 coord.append(n)
-            #else:
-            #    self.labels[n] = ''
+            else:
+                self.labels[n] = ''
 
         nx.draw_networkx_edges(net, pos, edgelist=edgelist, style='dotted', edge_color='#9C9C9C')
         nx.draw_networkx_nodes(net, pos, node_size=node_sizes, node_color=node_colors, node_shape='s')
         nx.draw_networkx_nodes(net, pos, nodelist=coord, node_shape='o', node_size=130)
         if show_labels:
-            nx.draw_networkx_labels(net, label_pos, labels=net.labels, font_size=6, font_color='g')
+            nx.draw_networkx_labels(net, label_pos, labels=net.labels, font_size=6, font_color='w')
 
         #print plt.xlim()
         return fig

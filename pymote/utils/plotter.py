@@ -267,16 +267,16 @@ def gethtmlScatter(x, y, fname, folder="", axis_range={}, labels=None,
                     if yy['name'] == y[2][j]['name']:
                         yyx, yyy = yy['x'], yy['y']
                         yyx2, yyy2 = y[2][j]['x'], y[2][j]['y']
-                        yyx2 = w + 5 if yyx2 > w else yyx2
-                        yyx2 = -5 if yyx2 < 0 else yyx2
-                        yyy2 = h + 5 if yyy2 > h else yyy2
-                        yyy2 = -5 if yyy2 < 0 else yyy2
+                        yyx2 = w + 3 if yyx2 > w + 3 else yyx2
+                        yyx2 = -3 if yyx2 < -3 else yyx2
+                        yyy2 = h + 3 if yyy2 > h+3 else yyy2
+                        yyy2 = -3 if yyy2 < -3 else yyy2
 
                         series_line += "chart.renderer.path(['M', chart.xAxis[0].toPixels(" + str(yyx) + \
                                    "), chart.yAxis[0].toPixels(" + str(yyy) + \
                                    "), 'L', chart.xAxis[0].toPixels(" + str(yyx2) + \
                                    "), chart.yAxis[0].toPixels(" + str(yyy2) + \
-                                   ")]).attr({'stroke-width': 1, stroke: 'gray'}).add();"
+                                   ")]).attr({'stroke-width': 1, stroke: 'gray'}).add(group);"
                         j += 1
                 except (ValueError, Exception) as exc:
                     print exc
@@ -298,6 +298,8 @@ def gethtmlScatter(x, y, fname, folder="", axis_range={}, labels=None,
 var chart;
 var w;
 $(function () {
+    var group;
+    vis = true;
     w = $('#container').width()
     $('#container').highcharts({
         credits: {
@@ -346,8 +348,11 @@ $(function () {
         series: [''' + series_data + ''' ]
     },
     function (chart) { // on complete
+        group = chart.renderer.g().add();
     '''+ series_line + '''
-    });
+    });''' + \
+    ("$('#button').click(function () {if (vis) group.hide(); else group.show(); vis = !vis; });" if len(series_line)>1 else "") + \
+'''
 });
 //]]>
 
@@ -360,12 +365,139 @@ $(function () {
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
-<table border="0" align="center"><tr><td>
+<table border="0" align="center"><tr><td align="center">
 <span id="container" style="height: 600px; margin: auto; min-width: 600px; max-width: 600px"></span>
-</td><td style="font-family: 'Lucida Console'; font-size: 12px; height: 600px; padding: 25px; max-width: 500px"><span id="report" ><h3>''' + title + '''</h3>''' + \
+''' + ("<button id='button'>Toggle Error Lines</button>" if len(series_line)>1 else "") + \
+'''</td><td style="font-family: 'Lucida Console'; font-size: 12px; height: 600px; padding: 25px; max-width: 500px">
+<span id="report" ><h3>''' + title + '''</h3>''' + \
                report + '''<br><br>Click on the legend on the bottom to hide/show series</span>
 </td></tr></table>
+</body>
+</html>
+'''
+    path = get_path(folder,fname) + ".html"
+    if 'open' in kwargs:
+        browseLocal(contents, filename=path)
+    else:
+        strToFile(contents, filename=path)
 
+
+def gethtmlmultiplots(x, y, fname, folder="", axis_range={}, labels=None,
+          xlabel="X", ylabel="Y", title=None, comment=".", **kwargs):
+
+    w = 100
+    h = 100
+    title = title or fname
+    report = kwargs.pop('report', comment)
+    plot_type = 'scatter'
+    if 'plot_type' in kwargs:
+        plot_type = kwargs.pop('plot_type')
+
+    plot_options = [""]
+    if 'plot_options' in kwargs:
+        plot_options = kwargs.pop('plot_options')
+
+    series_data = ""
+    k=0
+    if len(y)>10:
+       series_data += '''
+            {
+                name: "''' + (labels[k] if k < len(labels) else "") + '''",
+                ''' + (plot_options[k] if k < len(plot_options) else "") + '''
+                data: ''' + str(y) + ''',
+            },
+    '''
+    else:
+        for series in y:
+            series_data += '''
+            {
+                name: "''' + (labels[k] if k < len(labels) else "") + '''",
+                ''' + (plot_options[k] if k < len(plot_options) else "") + '''
+                data: ''' + str(series) + ''',
+            },
+    '''
+            k += 1
+
+    contents = '''<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>'''+title+'''</title>
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+  <style type='text/css'>
+  </style>
+
+<script type='text/javascript'>//<![CDATA[
+
+var chart;
+var w;
+$(function () {
+    var group;
+    vis = true;
+    w = $('#container').width()
+    $('#container').highcharts({
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            filename: "''' + fname + '''"
+        },
+        legend: {
+            margin: -5, padding: 0, y: -5, //layout: 'vertical', align: 'right', verticalAlign: 'middle', shadow: true, backgroundColor: '#FFFFFF',
+            title: {
+                //text: 'Farrukh Shahzad<br/>PhD, KFUPM<br/>Nov. 2015</span>',
+                style: {fontStyle: 'italic', fontSize: '10px'}
+            }
+        },
+        chart: {
+            zoomType: 'xy', panning: true, panKey: 'shift',
+            type: "''' + plot_type + '''"
+        },
+        title: {
+            text: "''' + title + '''"
+        },
+        subtitle: {
+            text: "''' + comment + '''"
+        },
+        tooltip: {
+            borderRadius: 10,
+            crosshairs: [{width: 1, color: 'gray',  dashStyle: 'shortdot'}, {width: 1, color: 'gray',  dashStyle: 'shortdot'}],
+            pointFormat: '{point.x:.1f}, {point.y:.1f}',
+            headerFormat: '<b>{series.name}</b><br />',
+            shared: true
+        },
+        xAxis: [{ // Primary yAxis
+            gridLineWidth: 1,
+            min: '''+ json.dumps(axis_range.get('xmin')) + ''', max: '''+ json.dumps(axis_range.get('xmax')) + ''',
+            title: { text: "'''+ xlabel + '''", y: -5}
+        }],
+        yAxis: [{ // Primary yAxis
+            lineWidth: 1,
+            minPadding: 0.0,
+            maxPadding: 0.0,
+            min: '''+ json.dumps(axis_range.get('ymin')) + ''', max: '''+ json.dumps(axis_range.get('ymax')) + ''',
+            title: {text: "'''+ ylabel + '''", x: 5}
+        }],
+        series: [''' + series_data + ''' ]
+    })
+});
+//]]>
+
+</script>
+
+</head>
+<body>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<table border="0" align="center"><tr><td align="center">
+<span id="container" style="height: 600px; margin: auto; min-width: 600px; max-width: 600px"></span>
+</td><td style="font-family: 'Lucida Console'; font-size: 12px; height: 600px; padding: 25px; max-width: 500px">
+<span id="report" ><h3>''' + title + '''</h3>''' + \
+               report + '''<br><br>Click on the legend on the bottom to hide/show series</span>
+</td></tr></table>
 </body>
 </html>
 '''
