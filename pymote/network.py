@@ -1,32 +1,42 @@
 import inspect
-from pymote.logger import logger
-from pymote.conf import settings, global_settings
-from networkx import Graph, is_connected
-import networkx as nx
-from environment import Environment
-from channeltype import ChannelType
-from node import Node
-from pymote import propagation
+from copy import deepcopy
+import json
 
 from numpy.random import rand
 from numpy.core.numeric import Inf, allclose
-from numpy import array, pi, sign, max, min
+from numpy import array, pi, sign, max, min, isnan
 from numpy.lib.function_base import average
-from algorithm import Algorithm
-from pymote.sensor import CompositeSensor
-from pymote.utils.helpers import pymote_equal_objects
-from copy import deepcopy
+from networkx import Graph, is_connected
+import networkx as nx
+from networkx.readwrite import json_graph
 
+from pymote.logger import logger
+from pymote.conf import settings, global_settings
+from environment import Environment
+from channeltype import ChannelType, Doi
+from node import Node
+from pymote.energy import EnergyModel
+from pymote import propagation
+from algorithm import Algorithm
+from pymote.sensor import CompositeSensor, TruePosSensor
+from pymote.utils.helpers import pymote_equal_objects
 
 class Network(Graph):
 
+    global fly
+
     def __init__(self, environment=None, channelType=None, algorithms=(),
                  networkRouting=True, propagation_type=2, **kwargs):
-
+        global fly
         Graph.__init__(self)
+        fly = 1
         self._environment = environment or Environment()
         # assert(isinstance(self.environment, Environment))
         self.channelType = channelType or ChannelType(self._environment)
+        if isinstance(self.channelType, Doi):
+            doi = kwargs.pop('doi', 0)
+            print "In DOI %s" %doi
+            self.channelType.set_params(doi=doi)
         self.channelType.environment = self._environment
         self.propagation = propagation.PropagationModel(propagation_type=propagation_type)
         self.pos = {}
@@ -83,7 +93,7 @@ class Network(Graph):
 
     @algorithms.setter
     def algorithms(self, algorithms):
-        self.reset()
+        #self.reset()
         self._algorithms = ()
         if not isinstance(algorithms, tuple):
             raise PymoteNetworkError('algorithm')
@@ -124,7 +134,7 @@ class Network(Graph):
         node.network = None
         logger.debug('Node with id %d is removed.' % node.id)
 
-    def add_node(self, node=None, pos=None, ori=None, commRange=None):
+    def add_node(self, node=None, pos=None, ori=None, commRange=None, find_random=False):
         """
         Add node to network.
 
@@ -146,17 +156,25 @@ class Network(Graph):
             logger.warning('Node is already in another network, can\'t add.')
             return None
 
-        pos = pos if pos is not None else self.find_random_pos(n=100)
+        pos = pos if (pos is not None and not isnan(pos[0])) else self.find_random_pos(n=100)
         ori = ori if ori is not None else rand() * 2 * pi
         ori = ori % (2 * pi)
+
+        got_random = False
+        if find_random and not self._environment.is_space(pos):
+            pos = self.find_random_pos(n=100)
+            got_random = True
 
         if (self._environment.is_space(pos)):
             Graph.add_node(self, node)
             self.pos[node] = array(pos)
             self.ori[node] = ori
             self.labels[node] = ('C' if node.type == 'C' else "") + str(node.id)
-            logger.debug('Node %d is placed on position %s [energy=%5.3f].'
-                         % (node.id, pos, node.power.energy))
+            logger.debug('Node %d is placed on position %s %s %s'
+                         % (node.id, pos,
+                            '[energy=%5.3f]' %node.power.energy
+                                    if node.power.energy != EnergyModel.E_INIT  else '',
+                            'Random' if got_random else ''))
             self.recalculate_edges([node])
         else:
             logger.error('Given position is not free space.')
@@ -282,7 +300,7 @@ class Network(Graph):
         node_colors = []
         colors = {'C': 'red', 'B': 'green', 'N': 'blue'}
         sizes = {'C': 80, 'B': 100, 'N': 30}
-        lab_off = {'C': 0, 'B': 0, 'N': 1}
+        lab_off = {'C': 0, 'B': 0, 'N': 0}
         coord = []
         for n in net.nodes():
             label_pos[n] = pos[n].copy() - lab_off[n.type]*label_delta
@@ -293,14 +311,15 @@ class Network(Graph):
                 node_colors.append('light'+colors.get(n.type, 'pink'))
             if n.type == 'C':
                 coord.append(n)
-            else:
+            elif len(net)>20:
                 self.labels[n] = ''
 
-        nx.draw_networkx_edges(net, pos, edgelist=edgelist, style='dotted', edge_color='#9C9C9C')
+        label_color = kwargs.pop('label_color', 'w')
+        nx.draw_networkx_edges(net, pos, edgelist=edgelist, style='dotted', edge_color='#0F0F0F')
         nx.draw_networkx_nodes(net, pos, node_size=node_sizes, node_color=node_colors, node_shape='s')
         nx.draw_networkx_nodes(net, pos, nodelist=coord, node_shape='o', node_size=130)
         if show_labels:
-            nx.draw_networkx_labels(net, label_pos, labels=net.labels, font_size=6, font_color='w')
+            nx.draw_networkx_labels(net, label_pos, labels=net.labels, font_size=6, font_color=label_color)
 
         #print plt.xlim()
         return fig
@@ -370,6 +389,8 @@ class Network(Graph):
                     raise PymoteMessageUndeliverable('Can\'t deliver message.',
                                                       message)
 
+
+
     def broadcast(self, message):
         if message.source in self.nodes():
             for neighbor in self.neighbors(message.source):
@@ -398,7 +419,29 @@ class Network(Graph):
     def get_size(self):
         """ Returns network width and height based on nodes positions. """
         return max(self.pos.values(), axis=0) - min(self.pos.values(), axis=0)
-    
+
+    def save_json(self, filename, scale=(1, 1)):
+        data = json_graph.node_link_data(self)
+        print data
+        #adj = json_graph.adjacency_data(self)
+        #print adj
+        h, w = self.environment.im.shape
+        nodes = []
+        colors = {'C': 'red', 'B': 'green', 'N': 'blue'}
+        shape = {'C': 'circle', 'B': 'circle', 'N': 'square'}
+        size = {'C': 15, 'B': 10, 'N': 5}
+        for node in self.nodes():
+            nodes.append({'name': str(node.id), 'id': node.id, "size":size[node.type],
+                "x": round(self.pos[node][0]*scale[0]), "color": colors[node.type],
+                "y": (h - round(self.pos[node][1])*scale[1]), "shape": shape[node.type]
+                })
+        data.pop('nodes')
+        #print data
+        #print nodes
+        data['nodes'] = nodes
+        with open(filename, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
+
     def get_dic(self):
         """ Return all network data in form of dictionary. """
         algorithms = {'%d %s' % (ind, alg.name): 'active'

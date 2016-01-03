@@ -1,6 +1,6 @@
-from pymote.algorithms.shazad2015.floodingupdate import FloodingUpdate
+from pymote.algorithms.ral2009.floodingupdate import FloodingUpdate
 from numpy import concatenate, array, sqrt, dot
-
+from pymote.logger import logger
 
 class DVHop(FloodingUpdate):
     """
@@ -9,7 +9,7 @@ class DVHop(FloodingUpdate):
 
     required_params = ('truePositionKey', 'hopsizeKey')
 
-    MAX_HOP = 8
+    MAX_HOP = 100 #bypass
 
     def initiator_condition(self, node):
         node.memory[self.truePositionKey] = node.compositeSensor.read().\
@@ -53,9 +53,19 @@ class DVHop(FloodingUpdate):
         except KeyError:
             pass
         else:
-            dist = lambda x, y: sqrt(dot(x - y, x - y))
             if landmarks_count > 0:
-                node.memory[self.hopsizeKey] = \
-                    sum([dist(lp[:2], pos)
-                         for lp in node.memory[self.dataKey].values()]) / \
-                    sum([lp[2] for lp in node.memory[self.dataKey].values()])
+                dist = lambda x, y: sqrt(dot(x - y, x - y))
+                dt=0.0
+                ht=0.0
+                for lp in node.memory[self.dataKey].values():
+                    threshold = FloodingUpdate.lookup.get(lp[2], 0.75) * node.commRange
+                    hl = dist(lp[:2], pos)/lp[2]
+                    logger.debug("node=%s, hop=%s, threshold=%s, hoplen=%s" %(node.id, lp[2], threshold, hl))
+                    if hl > threshold:  # reliable
+                        dt += hl
+                        ht += lp[2]
+                if ht>0.01:
+                    node.memory[self.hopsizeKey] = dt/ht
+                        # sum([dist(lp[:2], pos)
+                        #      for lp in node.memory[self.dataKey].values()]) / \
+                        # sum([lp[2] for lp in node.memory[self.dataKey].values()])

@@ -1,6 +1,6 @@
-from pymote.algorithms.shazad2015.floodingupdate import FloodingUpdate
+from pymote.algorithms.ral2009.floodingupdate import FloodingUpdate
 from pymote.logger import logger
-from numpy import array, sqrt, average, dot, diag, ones, nan
+from numpy import array, sqrt, average, dot, diag, ones
 from numpy import linalg
 
 
@@ -16,7 +16,7 @@ class Trilaterate(FloodingUpdate):
                        )
 
     def initiator_condition(self, node):
-        return node.memory.get(self.truePositionKey) is not None  # if landmark
+        return node.memory[self.truePositionKey] is not None  # if landmark
 
     def initiator_data(self, node):
         return node.memory.get(self.hopsizeKey)
@@ -38,26 +38,35 @@ class Trilaterate(FloodingUpdate):
             landmarks = node.memory[self.dataKey].keys()
         # calculate estimated distances
         if len(landmarks) >= 3:
-            landmark_distances = [node.memory[self.dataKey][lm][2] *
-                                  node.memory[self.hopsizeKey]
-                                  for lm in landmarks]
-            landmark_positions = [array(node.memory[self.dataKey][lm][:2])
+            dist = lambda x, y: sqrt(dot(x - y, x - y))
+            landmark_max_positions = [array(node.memory[self.dataKey][lm][:2])
                                   for lm in landmarks]
             # take centroid as initial estimation
-            pos = average(landmark_positions, axis=0)
-            W = diag(ones(len(landmarks)))
+            pos = average(landmark_max_positions, axis=0)
+            landmark_distances = []
+            landmark_positions = []
+            # only reliable anchors
+            for lp in node.memory[self.dataKey].values():
+                 threshold = FloodingUpdate.lookup.get(lp[2], 0.75) * node.commRange
+                 hl = dist(lp[:2], pos)/lp[2]
+                 logger.debug("Node=%s, Hop=%s, threshold=%s, hoplen=%s" %(node.id, lp[2], threshold, hl))
+                 if hl > threshold and self.hopsizeKey in node.memory:  # reliable
+                    landmark_distances.append(lp[2] * (node.memory[self.hopsizeKey] or 1))
+                    landmark_positions.append(array(lp[:2]))
+
+            # take centroid as initial estimation
+            W = diag(ones(len(landmark_positions)))
             counter = 0
-            dist = lambda x, y: sqrt(dot(x - y, x - y))
-            while pos.any() != nan:
+            while True:
                 J = array([(lp - pos) / dist(lp, pos)
                            for lp in landmark_positions])
                 range_correction = array([dist(landmark_positions[li], pos) -
                                           landmark_distances[li]
-                                          for li, lm in enumerate(landmarks)])
+                                          for li, lm in enumerate(landmark_positions)])
                 pos_correction = dot(linalg.inv(dot(dot(J.T, W), J)),
                                      dot(dot(J.T, W), range_correction))
-                pos = pos + pos_correction
                 logger.debug("Est. %s, %s, %s" %(node.id, pos, pos_correction))
+                pos = pos + pos_correction
                 counter += 1
                 if sqrt(sum(pos_correction ** 2)) < \
                    TRESHOLD or counter >= MAX_ITER:

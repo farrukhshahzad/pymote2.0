@@ -153,7 +153,7 @@ class Node(object):
 
         self._inboxDelay = self._inboxDelay or not self._inbox
         self._inbox.insert(0, message)
-        print "Got" + str(len(self._inbox)) + str(self._inboxDelay)
+        #print "Got" + str(len(self._inbox)) + str(self._inboxDelay)
 
     @property
     def compositeSensor(self):

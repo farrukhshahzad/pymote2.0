@@ -40,24 +40,19 @@ y_radius = h/3/clusters
 degree = 10
 
 
-# Topology setup
-Node.cid = 1
-net_gen = Toplogy(n_count=n, n_max=2*n, n_min=n/2, connected=False, comm_range=c_range)
+# # Topology setup
+# Node.cid = 1
+net_gen = Toplogy(n_count=n, n_max=2*n, n_min=n/2, connected=True, comm_range=c_range)
 # cut_shape is a rectangle with top-left and bottom-right coordinates
-net = net_gen.generate_grid_network(name="O-shaped Grid", randomness=0.2,
+net = net_gen.generate_grid_network(name="O-shaped Grid", randomness=0.2, p_anchors=p_anchors,
                                     cut_shape=[[(w/4,3*h/4), (3*w/4,h/4)]])
 
-f_anchors = (int)(100 / p_anchors)
-for node in net.nodes():
-    if node.id % f_anchors == 0:  # anchor nodes
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
+n_anchors = net_gen.anchors
+node=net.nodes()[0]
 # saving topology as PNG image
 avg_deg = net.avg_degree()
 na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
+net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
 filename = (net.name.split("\n")[0]).replace("$","")
@@ -67,206 +62,207 @@ net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
 print net.__len__(), avg_deg, node.commRange
 net.reset()
 
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="C-shaped Grid", randomness=0.2,
-                                    cut_shape=[[(w/4,3*h/4), (w, h/4)]])
-f_anchors = (int)(100 / p_anchors)
-for node in net.nodes():
-    if node.id % f_anchors == 0:  # anchor nodes
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-avg_deg = net.avg_degree()
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print na, avg_deg, node.commRange
-net.reset()
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1,
-                                    cut_shape=[[(w/4,3*h/4), (w,7*h/12)], [(0,5*h/12), (3*w/4, h/4)]])
-anchors = [10, 30, 42, 84, 119, 110]
-f_anchors = (int)(100 / p_anchors)
-for node in net.nodes():
-    if node.id % f_anchors == 0:  # anchor nodes
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-avg_deg = net.avg_degree()
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print na, avg_deg, node.commRange
-net.reset()
-
-
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="W-shaped Grid", randomness=0.1,
-                                    cut_shape=[[(w/4,h), (5*w/12,h/3)], [(7*w/12,h), (3*w/4, h/3)]])
-f_anchors = (int)(100 / p_anchors)
-for node in net.nodes():
-    if node.id % f_anchors == 0:  # anchor nodes
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-avg_deg = net.avg_degree()
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print net.__len__(), avg_deg, node.commRange
-net.reset()
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="8-shaped Grid", randomness=0.1,
-                                    cut_shape=[[(w/4,3*h/4), (3*w/4,7*h/12)], [(w/4,5*h/12), (3*w/4, h/4)]])
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-f_anchors = (int)(100 / p_anchors)
-# Random Anchor selection
-for i in range(1, n_anchors):
-        node = net.nodes()[int(rand() * na)]
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-avg_deg = net.avg_degree()
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print net.__len__(), avg_deg, node.commRange
-net.reset()
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="H-shaped Grid", randomness=0.1,
-                                    cut_shape=[[(w/4,h), (3*w/4,2*h/3)], [(w/4,h/3), (3*w/4, 0)]])
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-f_anchors = (int)(100 / p_anchors)
-# Random Anchor selection
-for i in range(1, n_anchors):
-        node = net.nodes()[int(rand() * na)]
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-avg_deg = net.avg_degree()
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print net.__len__(), avg_deg, node.commRange
-net.reset()
-
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="T-shaped Grid", randomness=0.2,
-                                    cut_shape=[[(0,2*h/3), (w/3,0)], [(2*w/3,2*h/3), (w, 0)]])
-f_anchors = (int)(100 / p_anchors)
-for node in net.nodes():
-    if node.id % f_anchors == 0:  # anchor nodes
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-avg_deg = net.avg_degree()
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
-net.reset()
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="I-shaped Grid", randomness=0.2,
-                                    cut_shape=[[(0,5*h/6), (w/3,h/6)], [(2*w/3,5*h/6), (w, h/6)]])
-f_anchors = (int)(100 / p_anchors)
-for node in net.nodes():
-    if node.id % f_anchors == 0:  # anchor nodes
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-avg_deg = net.avg_degree()
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
-net.reset()
-
-Node.cid = 1
-#net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
-net = net_gen.generate_grid_network(name="Plus-shaped Grid", randomness=0.2,
-                                    cut_shape=[[(0,h), (w/3, h/6)],[(3*w/3,h), (w, h/6)],
-                                    [(0,5*h/6), (w/3, 0)], [(2*w/3,5*h/6), (w, 0)]])
-f_anchors = (int)(100 / p_anchors)
-for node in net.nodes():
-    if node.id % f_anchors == 0:  # anchor nodes
-        node.compositeSensor = (TruePosSensor,)
-        node.type = 'C'  # Anchors
-
-# saving topology as PNG image
-avg_deg = net.avg_degree()
-na = net.__len__()
-n_anchors = (int)(na *  p_anchors/100.0)
-net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
-              round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
-filename = (net.name.split("\n")[0]).replace("$","")
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
-
-print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
-net.reset()
-
+#
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+# net = net_gen.generate_grid_network(name="C-shaped Grid", randomness=0.2,
+#                                     cut_shape=[[(w/4,3*h/4), (w, h/4)]])
+# f_anchors = (int)(100 / p_anchors)
+# for node in net.nodes():
+#     if node.id % f_anchors == 0:  # anchor nodes
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# avg_deg = net.avg_degree()
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print na, avg_deg, node.commRange
+# net.reset()
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+# net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1,
+#                                     cut_shape=[[(w/4,3*h/4), (w,7*h/12)], [(0,5*h/12), (3*w/4, h/4)]])
+# anchors = [10, 30, 42, 84, 119, 110]
+# f_anchors = (int)(100 / p_anchors)
+# for node in net.nodes():
+#     if node.id % f_anchors == 0:  # anchor nodes
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# avg_deg = net.avg_degree()
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print na, avg_deg, node.commRange
+# net.reset()
+#
+#
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+# net = net_gen.generate_grid_network(name="W-shaped Grid", randomness=0.1,
+#                                     cut_shape=[[(w/4,h), (5*w/12,h/3)], [(7*w/12,h), (3*w/4, h/3)]])
+# f_anchors = (int)(100 / p_anchors)
+# for node in net.nodes():
+#     if node.id % f_anchors == 0:  # anchor nodes
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# avg_deg = net.avg_degree()
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print net.__len__(), avg_deg, node.commRange
+# net.reset()
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+# net = net_gen.generate_grid_network(name="8-shaped Grid", randomness=0.1,
+#                                     cut_shape=[[(w/4,3*h/4), (3*w/4,7*h/12)], [(w/4,5*h/12), (3*w/4, h/4)]])
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# f_anchors = (int)(100 / p_anchors)
+# # Random Anchor selection
+# for i in range(1, n_anchors):
+#         node = net.nodes()[int(rand() * na)]
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# avg_deg = net.avg_degree()
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print net.__len__(), avg_deg, node.commRange
+# net.reset()
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+# net = net_gen.generate_grid_network(name="H-shaped Grid", randomness=0.1,
+#                                     cut_shape=[[(w/4,h), (3*w/4,2*h/3)], [(w/4,h/3), (3*w/4, 0)]])
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# f_anchors = (int)(100 / p_anchors)
+# # Random Anchor selection
+# for i in range(1, n_anchors):
+#         node = net.nodes()[int(rand() * na)]
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# avg_deg = net.avg_degree()
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print net.__len__(), avg_deg, node.commRange
+# net.reset()
+#
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+# net = net_gen.generate_grid_network(name="T-shaped Grid", randomness=0.2,
+#                                     cut_shape=[[(0,2*h/3), (w/3,0)], [(2*w/3,2*h/3), (w, 0)]])
+# f_anchors = (int)(100 / p_anchors)
+# for node in net.nodes():
+#     if node.id % f_anchors == 0:  # anchor nodes
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# avg_deg = net.avg_degree()
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
+# net.reset()
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=False)
+# net = net_gen.generate_grid_network(name="I-shaped Grid", randomness=0.2,
+#                                     cut_shape=[[(0,5*h/6), (w/3,h/6)], [(2*w/3,5*h/6), (w, h/6)]])
+# f_anchors = (int)(100 / p_anchors)
+# for node in net.nodes():
+#     if node.id % f_anchors == 0:  # anchor nodes
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# avg_deg = net.avg_degree()
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
+# net.reset()
+#
+# Node.cid = 1
+# #net_gen = Toplogy(n_count=n, degree=degree, n_max=n, n_min=n, connected=True)
+# net = net_gen.generate_grid_network(name="Plus-shaped Grid", randomness=0.3,
+#                                     cut_shape=[[(0,h), (w/3, 2*h/3)],[(2*w/3, h), (w, 2*h/3)],
+#                                     [(0, h/3), (w/3, 0)], [(2*w/3, h/3), (w, 0)]])
+# f_anchors = (int)(100 / p_anchors)
+# for node in net.nodes():
+#     if node.id % f_anchors == 0:  # anchor nodes
+#         node.compositeSensor = (TruePosSensor,)
+#         node.type = 'C'  # Anchors
+#
+# # saving topology as PNG image
+# avg_deg = net.avg_degree()
+# na = net.__len__()
+# n_anchors = (int)(na *  p_anchors/100.0)
+# net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$" \
+#            % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+#               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+# filename = (net.name.split("\n")[0]).replace("$","")
+# net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)", show_labels=True, format="pdf")
+#
+# print net.__len__(), avg_deg, node.commRange, net_gen.area, net_gen.net_density
+# net.reset()
+#
 
 # Manual network topology setup
 # Node.cid = 1

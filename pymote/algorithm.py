@@ -149,9 +149,7 @@ class NodeAlgorithm(Algorithm):
             node.send(message)
 
     def _process_message(self, node, message):
-        return self.__class__.STATUS.get(node.status, self.statuserr)(self,
-                                                                    node,
-                                                                    message)
+        return self.__class__.STATUS.get(node.status, self.statuserr)(self, node, message)
 
     def statuserr(self, node, message):
         logger.error('Can\'t handle status %s.' % node.status)

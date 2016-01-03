@@ -27,10 +27,10 @@ from pymote.utils.filing import getDateStr, get_path, load_metadata,\
 from pymote.simulation import Simulation
 from pymote.sensor import TruePosSensor
 from pymote.networkgenerator import NetworkGenerator
-#from pymote.algorithms.niculescu2003.dvhop import DVHop
-#from pymote.algorithms.niculescu2003.trilaterate import Trilaterate
-from pymote.algorithms.shazad2015.dvhop import DVHop
-from pymote.algorithms.shazad2015.trilaterate import Trilaterate
+from pymote.algorithms.niculescu2003.dvhop import DVHop
+from pymote.algorithms.niculescu2003.trilaterate import Trilaterate
+from pymote.algorithms.shazad2015.dvhop import DVHop as DVmaxhop
+from pymote.algorithms.shazad2015.trilaterate import Trilaterate as Trilateratemax
 
 '''Start of Script'''
 
@@ -43,19 +43,14 @@ seed(123)  # to get same random sequence for each run so that simulation can be 
 # Network/Environment setup
 global_settings.ENVIRONMENT2D_SHAPE = (100, 100) # desired network size for simulation
 global_settings.COMM_RANGE = 10
+#global_settings.CHANNEL_TYPE = 'Doi'
 
-
-maxHop = 8
-method="DV-hop2"
-n = 289  # total no of nodes
-p_anchors = 10  # No. of anchors in %age
 c_range = 10  # communication radii of each node
-degree = 10   # Desired degree or connectivity (how many nodes are in range)
 net = Network(commRange=c_range)  # Initiate the network object
 h, w = net.environment.im.shape  # get the network width and height(should be as above)
 
 propagation.PropagationModel.P_TX = energy.EnergyModel.P_TX  # 0.0144  # Node Tx Power
-# The distance below which signal is receibved without any interference
+# The distance below which signal is received without any interference
 propagation.PropagationModel.MAX_DISTANCE_NO_LOSS = 2 # in m
 # The received packet will be assumed lost/corrupted by the receiver if SNR is below this number
 propagation.PropagationModel.P_RX_THRESHOLD = -70 # in dbm
@@ -91,18 +86,48 @@ Node.cid = 1  # start node id
 sr = 0
 stats=''
 loc_err = []
+degree = 10   # Desired degree or connectivity (how many nodes are in range)
 vary_name = "Degree"
-experiment = "Effect of Connectivity"
-
+experiment = "Effect of average degree"
+maxHop = 0
+method="DV-hop"
+n = 429  # total no of nodes
+p_anchors = 11.0  # No. of anchors in %age
+doi = 0
 
 for vary in range(5,25,5):
-    net_gen = Toplogy(n_count=n, degree=vary, maxn=n, n_min=n, connected=False)
-    net = net_gen.generate_grid_network(name="Randomized Grid", randomness=0.5)
-    #net = net_gen.generate_grid_network(name="O-shaped Grid", randomness=0.2,
-    #                             cut_shape=[[(w/4,3*h/4), (3*w/4,h/4)]])
+    Node.cid = 1  # start node id
+    #doi = vary/10.0
+    #degree = 9-vary
+    #if vary == 6:
+    #    degree = 4
+    #p_anchors = vary  # No. of anchors in %age
+    n = vary * 47
+    # if vary in [5, 15]:
+    #     p_anchors = 9
+    # else:
+    #     p_anchors = 10
+    #net_gen = NetworkGenerator(n_count=n, degree=vary)
+    #net = net_gen.generate_homogeneous_network(name='Sparse Random')
+    net_gen = Toplogy(n_count=n, maxn=n, n_min=n, connected=True, doi=doi)
+    #net_gen = Toplogy(n_count=n, maxn=n, n_min=n, connected=True)
+    #net = net_gen.generate_grid_network(name="Randomized Grid", randomness=0.5)
+    net = net_gen.generate_grid_network(name="O-shaped Grid", randomness=0.1,
+                                 cut_shape=[[(w/4,3*h/4), (3*w/4,h/4)]])
+    #net = net_gen.generate_grid_network(name="C-shaped Grid", randomness=0.2,
+    #                                    cut_shape=[[(w/4,3*h/4), (w, h/4)]])
+    #net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.2,
+    #                                    cut_shape=[[(w/4,3*h/4), (w,7*h/12)],
+    #                                               [(0,5*h/12), (3*w/4, h/4)]])
+    #net = net_gen.generate_grid_network(name="Plus-shaped Grid", randomness=0.3,
+    #                                cut_shape=[[(0,h), (w/3, 2*h/3)],[(2*w/3, h), (w, 2*h/3)],
+    #                                [(0, h/3), (w/3, 0)], [(2*w/3, h/3), (w, 0)]])
     nn = net.__len__()
-    folder = DATETIME_DIR+ "-" + net_gen.name+"-N=" + str(nn) + \
-             "-" + vary_name + "-hop=" + str(maxHop)
+    folder = DATETIME_DIR+ "-" + net_gen.name+"-" + vary_name + "-hop=" + str(maxHop)
+    if 'DV-hop' in method:
+        maxHop=0
+        folder = DATETIME_DIR+ "-" + net_gen.name+"-" + vary_name + "-" + method
+
     xpositions = []
     xestpositions = []
     deltapos = []
@@ -142,29 +167,35 @@ for vary in range(5,25,5):
     avg_deg = round(net.avg_degree())
     comm_range = node.commRange
     # set the network name based on no. of Nodes, degree and Comm. Range
-    net.name = "%s(%s) - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$" \
-               % (net_gen.name, vary, nn, n_anchors, round(avg_deg,1), round(comm_range,1),
-                  round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+    net.name = "%s(%s) - $N=$%s(%s), $D=$%s, $R=$%s m\n" \
+               "$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$, $DOI$=%s" \
+               % (net_gen.name, vary, nn, n_anchors, round(avg_deg,1),
+                  round(comm_range,1), round(net_gen.area/1000.0, 2),
+                  round(net_gen.net_density*1000, 1), round(doi, 1))
 
     filename = (net.name.split("\n")[0]).replace("$","")
 
-    area =  "A: %s x 1000 m^2, ND: %s /1000 m^2" %(round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1))
+    area = "A: %s x 1000 m^2, ND: %s /1000 m^2, DOI: %s" \
+           %(round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1),
+             round(doi, 1))
 
     net.savefig(fname=get_path(folder, filename),   title=net.name,
-                x_label="X-coordinate (m)", y_label="Y-coordinate (m)", show_labels=False, format="pdf")
+                x_label="X-coordinate (m)", y_label="Y-coordinate (m)",
+                show_labels=True, format="pdf")
 
 
     # Now select the algorithm for simulation
-    net.algorithms = ((DVHop, {'truePositionKey': 'tp',
-                                      'hopsizeKey': 'hs',
-                                      'dataKey': 'I',
-                                      'maxHop': maxHop
-                                      }),
-                       (Trilaterate, {'truePositionKey': 'tp',
-                                            'hopsizeKey': 'hs',
-                                            'positionKey': 'pos',
-                                            'dataKey': 'I'}),
-                        )
+
+    net.algorithms = ((DVHop if maxHop==0 else DVmaxhop, {'truePositionKey': 'tp',
+                                  'hopsizeKey': 'hs',
+                                  'dataKey': 'I',
+                                   'maxHop': maxHop
+                                  }),
+                   (Trilaterate if maxHop==0 else Trilateratemax, {'truePositionKey': 'tp',
+                                        'hopsizeKey': 'hs',
+                                        'positionKey': 'pos',
+                                        'dataKey': 'I'}),
+                    )
 
     start_time = time.time()
     # simulation start
@@ -219,6 +250,8 @@ for vary in range(5,25,5):
         esterror.append(err)
         deltapos.append(net.pos[node][0] - newx)
 
+    X2 = np.sort(esterror)
+    F2 = 1. * np.arange(len(esterror))/(len(esterror)+1)
     # Summary of simulation result/Metrics
     comments = "Runtime(s): "+ str(round(end_time,2)) + "(" + \
                str(round(end_time/nn,3)) + ")"+  \
@@ -227,7 +260,9 @@ for vary in range(5,25,5):
                "<br>Tx/Rx per node: " + str(int(total_tx/nn)) + "/" + \
                                            str(int(total_rx/nn)) + \
                ",  Energy/node (mJ): " + str(round(1000*total_energy/nn, 2)) + \
-               ", MaxHop: " + str(maxHop)
+               ", |Err>R|: " + str(len(X2[X2>comm_range]))
+    if maxHop > 0:
+        comments += ", MaxHop: " + str(maxHop)
 
     print (comments)
     stats = "Simulation Start at: " + getDateStr(sim.sim_start) + " UTC <br><br>"
@@ -275,7 +310,7 @@ for vary in range(5,25,5):
     nnd.append('std')
     nnd.append('var')
 
-    loc_err.append([vary, degree, k, len(unlocalized), round(end_time/nn,3),
+    loc_err.append([vary, degree, k, len(unlocalized), round(end_time/nn,3),len(X2[X2>comm_range]),
                     position_stats[-4][5], position_stats[-2][5], position_stats[-1][5],
                     message_stats[-4][1],message_stats[-4][3],message_stats[-4][6], consume[-5]])
 
@@ -306,7 +341,7 @@ for vary in range(5,25,5):
                     title="Topology-"+filename, open=1, axis_range={'xmin':0, 'ymin':0, 'xmax': w, 'ymax': h},
                     comment=comments, show_range=int(node.commRange),
                     report=area+"<br>"+comments+"<br><br>" + str(stats),
-                    plot_options=["color: 'red', visible: false,", "color: 'blue',",
+                    plot_options=["color: 'red', visible: true,", "color: 'blue',",
                                   "color: 'green', visible: true,"])
 
     plotter.gethtmlLine(range(1,len(xpositions)), [xpositions, xestpositions, deltapos, esterror],
@@ -322,5 +357,6 @@ print loc_err
 sp.savetxt(get_path(folder, "%s-%s.csv" % (experiment, filename)),
                loc_err,
                delimiter=",", fmt="%8.2f", comments='',
-               header='     Anc%    Anchors Localized   Not    runtime  avg_err  max_err  std_err  TX      Rx       SNR     Energy',
+               header='   Degree    Anc% Localized   Not    runtime  |err>R|  avg_err  max_err  std_err  '
+                      'TX      Rx       SNR     Energy',
                footer=net.name + "\n" + comments)

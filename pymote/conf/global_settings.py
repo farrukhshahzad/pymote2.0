@@ -50,3 +50,7 @@ AOA_PF_PARAMS = {'pf': scipy.stats.norm,
 #: :class:`pymote.sensor.DistSensor`
 DIST_PF_PARAMS = {'pf': scipy.stats.norm,
                   'scale': 10}
+
+
+DOI = 0
+

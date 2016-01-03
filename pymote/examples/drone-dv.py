@@ -46,21 +46,15 @@ seed(100)  # to get same random sequence for each run so that simulation can be 
 # Network/Environment setup
 global_settings.ENVIRONMENT2D_SHAPE = (100, 100) # desired network size for simulation
 global_settings.COMM_RANGE = 10
-global_settings.CHANNEL_TYPE = 'Doi'
-global_settings.DOI = 0
 
 maxHop = 10
 method="DV-maxHop"
 algorithm = {"RAL": [RalHop, TrilaterateRal], "DV-hop": [DVHop, Trilaterate], "DV-maxHop": [DVmaxhop, Trilateratemax]}
 
-clusters=28
-n = 600  # total no of nodes
+n = 200  # total no of nodes
 p_anchors = 11   # No. of anchors in %age
 c_range = 10  # communication radii of each node
 degree = 10   # Desired degree or connectivity (how many nodes are in range)
-x_radius = 0.9*global_settings.COMM_RANGE
-y_radius = 0.9*global_settings.COMM_RANGE
-
 net = Network(commRange=c_range)  # Initiate the network object
 h, w = net.environment.im.shape  # get the network width and height(should be as above)
 
@@ -91,20 +85,14 @@ doi=0
 #net = net_gen.generate_homogeneous_network(name='Sparse Random')
 
 net_gen = Toplogy(n_count=n, n_max=n, n_min=n, connected=False)
-
-#net = net_gen.generate_gaussian_network(clusters=clusters, randomness=0.5, method='EM')
-#net = net_gen.generate_cluster_network(name=None,
-#        x_radius=x_radius, y_radius=y_radius,  sector=1.0,
-#        clusters=clusters,  randomness=3.8, method=None)
 # cut_shape is a rectangle with top-left and bottom-right coordinates
 #net = net_gen.generate_grid_network(name="O-shaped Grid", randomness=0.1,
-#                                    p_anchors=p_anchors,
 #                                    cut_shape=[[(w/4,3*h/4), (3*w/4,h/4)]])
 #net = net_gen.generate_grid_network(name="Random", randomness=0.5)
-#net = net_gen.generate_grid_network(name="C-shaped Grid", randomness=0.2, p_anchors=p_anchors,
-#                                    cut_shape=[[(w/4,3*h/4), (w, h/4)]])
-net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1, p_anchors=p_anchors,
-                                    cut_shape=[[(w/4,3*h/4), (w,7*h/12)], [(0,5*h/12), (3*w/4, h/4)]])
+net = net_gen.generate_grid_network(name="C-shaped Grid", randomness=0.1,
+                                    cut_shape=[[(w/4,3*h/4), (w, h/4)]])
+#net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1,
+#                                    cut_shape=[[(w/4,3*h/4), (w,7*h/12)], [(0,5*h/12), (3*w/4, h/4)]])
 #net = net_gen.generate_grid_network(name="W-shaped Grid", randomness=0.1,
 #                                    cut_shape=[[(w/4,h), (5*w/12,h/3)], [(7*w/12,h), (3*w/4, h/3)]])
 #net = net_gen.generate_grid_network(name="H-shaped Grid", randomness=0.1,
@@ -114,33 +102,37 @@ net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1, p_anch
 #net = net_gen.generate_grid_network(name="8-shaped Grid", randomness=0.1,
 #                                    cut_shape=[[(w/4,3*h/4), (3*w/4,7*h/12)], [(w/4,5*h/12), (3*w/4, h/4)]])
 # Computes no. of anchors
-n_anchors = net_gen.anchors
+f_anchors = (int)(100 / p_anchors)
+
 # Set some nodes as anchor based on number of desired anchors
 # Two arrays are populated with location of nodes to be plotted later
 for node in net.nodes():
     xpositions.append(net.pos[node][0])
-    if (node.type=='C'):  # anchor nodes
-        anchpositions.append({'x': net.pos[node][0], 'y': net.pos[node][1],
-                              'name': str(node.id), 'color': 'red',
-                              'marker': {'symbol': 'circle', 'radius': '8'}})
-    else:
-        positions.append({'x': net.pos[node][0], 'y': net.pos[node][1],
+    # if (node.id % f_anchors==0):  # anchor nodes
+    #     node.compositeSensor = (TruePosSensor,)
+    #     node.type = 'C'  # Anchors
+    #     anchpositions.append({'x': net.pos[node][0], 'y': net.pos[node][1],
+    #                           'name': str(node.id), 'color': 'red',
+    #                           'marker': {'symbol': 'circle', 'radius': '8'}})
+    # else:
+    positions.append({'x': net.pos[node][0], 'y': net.pos[node][1],
                           'name': 'Node: ' + str(node.id), 'color': 'blue',
                           'marker': {'radius': '5'}})
 
 
 nn = net.__len__()
+n_anchors = (int)(nn *  p_anchors/100.0)
 avg_deg = round(net.avg_degree())
 comm_range = node.commRange
 
-folder = DATETIME_DIR+ "-" + net_gen.name+"-hop=" + str(maxHop)
+folder = DATETIME_DIR+ "-" + net_gen.name+"-hop=" + str(maxHop)+"-Drone"
 if 'DV-maxHop' not in method:
         maxHop=None
         folder = DATETIME_DIR+ "-" + net_gen.name+"-" + method
 
 # set the network name based on no. of Nodes, degree and Comm. Range
 net.name = "%s $N=$%s(%s), $D=$%s, $R=$%s m\n" \
-               "$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$, $DOI$=%s" \
+               "$A=$%s$\\times 10^3m^2$, $ND=$%s$/10^3.m^2$, $DOI$=%s" \
                % (net_gen.name, nn, n_anchors, round(avg_deg,1),
                   round(comm_range,1), round(net_gen.area/1000.0, 2),
                   round(net_gen.net_density*1000, 1), round(doi, 1))
@@ -150,10 +142,18 @@ filename = (net.name.split("\n")[0]).replace("$","")
 area = "A: %s x 1000 m^2, ND: %s /1000 m^2, DOI: %s" \
            %(round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1),
              round(doi, 1))
-net.savefig(fname=get_path(folder, filename),   title=net.name,
-            x_label="X-coordinate (m)", y_label="Y-coordinate (m)",
-            show_labels=True, format="pdf")
 
+net.savefig(fname=get_path(folder, filename),   title=net.name,
+            x_label="X-coordinate (m)", y_label="Y-coordinate (m)", show_labels=False, format="pdf")
+
+for i in range(10):
+    node = Node()
+    net.add_node(node, pos=(10.0, 10.0*i))
+    node.compositeSensor = (TruePosSensor,)
+    node.type = 'C'  # Anchors
+
+
+start_time = time.time()
 
 # Now select the algorithm for simulation
 net.algorithms = ((algorithm[method][0], {'truePositionKey': 'tp',
@@ -167,17 +167,23 @@ net.algorithms = ((algorithm[method][0], {'truePositionKey': 'tp',
                                         'dataKey': 'I'}),
                     )
 
-start_time = time.time()
 # simulation start
 sim = Simulation(net)
-sim.run()
 # simulation ends
+sim.run()
 
 end_time = time.time() - start_time
 print("Execution time:  %s seconds ---" % round(end_time,2) )
 
+for node in net.nodes():
+    if node.type=='C':
+        anchpositions.append({'x': net.pos[node][0], 'y': net.pos[node][1],
+                          'name': str(node.id), 'color': 'red',
+                          'marker': {'symbol': 'circle', 'radius': '8'}})
+
+
 # Now data capturing/analysis and visualization
-k=0
+k=1
 err_sum=0.0
 total_tx = 0  # Total number of Tx by all nodes
 total_rx = 0  # Total number of Rx by all nodes
@@ -205,10 +211,9 @@ for node in net.nodes():
         err = sqrt(sum(pow(act - est, 2)))
         if 'reliable' in node.memory:
             hops = len(node.memory['reliable'])
-            #print node.id, hops , node.memory['reliable']
+            print node.id, hops , node.memory['reliable']
 
         position_stats.append([node.id, act[0], act[1], newx, newy, err, hops])
-        esterror.append(err)
         err_sum += err
         k += 1
         newpos.append({'x': newx, 'y': newy,
@@ -222,6 +227,7 @@ for node in net.nodes():
         unlocalized.append([node.id, node.memory.get('I')])
 
     xestpositions.append(newx)
+    esterror.append(err)
     deltapos.append(net.pos[node][0] - newx)
 
 
@@ -320,11 +326,11 @@ plotter.gethtmlScatter(xpositions, [anchpositions, positions, newpos],
                 plot_options=["color: 'red', visible: true,", "color: 'blue',",
                               "color: 'green', visible: true,"])
 
-plotter.gethtmlLine(range(1,len(xpositions)), [esterror, [row[6] for row in position_stats]],
-                fname="Error-"+filename, folder=folder,
-                xlabel="Node", ylabel="meters", labels=['Estimated Errors', 'Good Anchors'],
-                title="Error-"+filename, comment=comments, open=1,
-                plot_options=["color: 'red',", "type: 'areaspline', color: 'grey', visible: false,"])
+# plotter.gethtmlLine(range(1,len(xpositions)), [xpositions, xestpositions, deltapos, esterror],
+#                 fname="X-"+filename, folder=folder,
+#                 xlabel="Node", ylabel="meters", labels=['Actual', 'Estimated', 'X-Error', 'Est. Error'],
+#                 title="X-"+filename, comment=comments,
+#                 plot_options=["color: 'red',", "color: 'blue',", "type: 'areaspline', color: 'grey', visible: false,"])
 
 # plotter.gethtmlLine(range(1,len(xpositions)), [consume, [row[1] for row in message_stats]],
 #                 fname="Power-"+filename, folder=folder,
