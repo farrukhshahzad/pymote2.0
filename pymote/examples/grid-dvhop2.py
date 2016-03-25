@@ -47,14 +47,14 @@ seed(100)  # to get same random sequence for each run so that simulation can be 
 global_settings.ENVIRONMENT2D_SHAPE = (100, 100) # desired network size for simulation
 global_settings.COMM_RANGE = 10
 global_settings.CHANNEL_TYPE = 'Doi'
-global_settings.DOI = 0
+global_settings.DOI = 0.4
 
 maxHop = 10
 method="DV-maxHop"
 algorithm = {"RAL": [RalHop, TrilaterateRal], "DV-hop": [DVHop, Trilaterate], "DV-maxHop": [DVmaxhop, Trilateratemax]}
 
-clusters=28
-n = 600  # total no of nodes
+clusters=30
+n = 300  # total no of nodes
 p_anchors = 11   # No. of anchors in %age
 c_range = 10  # communication radii of each node
 degree = 10   # Desired degree or connectivity (how many nodes are in range)
@@ -86,12 +86,17 @@ unlocalized = []
 
 # Network Topology setup
 Node.cid = 1  # start node id
-doi=0
+doi=global_settings.DOI
 #net_gen = NetworkGenerator(n_count=n, n_min=n, n_max=n, degree=5)
 #net = net_gen.generate_homogeneous_network(name='Sparse Random')
 
-net_gen = Toplogy(n_count=n, n_max=n, n_min=n, connected=False)
+net_gen = Toplogy(n_count=n, n_max=n, n_min=n, connected=False, doi=global_settings.DOI)
 
+net, p = net_gen.generate_cluster_network(name="8",
+         x_radius=x_radius, y_radius=y_radius,  sector=1,
+         clusters=clusters,  randomness=2.8, method="EM",
+         cut_shape=[[(w/4,3*h/4), (3*w/4,7*h/12)],
+                   [(w/4,5*h/12), (3*w/4, h/4)]])
 #net = net_gen.generate_gaussian_network(clusters=clusters, randomness=0.5, method='EM')
 #net = net_gen.generate_cluster_network(name=None,
 #        x_radius=x_radius, y_radius=y_radius,  sector=1.0,
@@ -103,8 +108,8 @@ net_gen = Toplogy(n_count=n, n_max=n, n_min=n, connected=False)
 #net = net_gen.generate_grid_network(name="Random", randomness=0.5)
 #net = net_gen.generate_grid_network(name="C-shaped Grid", randomness=0.2, p_anchors=p_anchors,
 #                                    cut_shape=[[(w/4,3*h/4), (w, h/4)]])
-net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1, p_anchors=p_anchors,
-                                    cut_shape=[[(w/4,3*h/4), (w,7*h/12)], [(0,5*h/12), (3*w/4, h/4)]])
+#net = net_gen.generate_grid_network(name="S-shaped Grid", randomness=0.1, p_anchors=p_anchors,
+#                                    cut_shape=[[(w/4,3*h/4), (w,7*h/12)], [(0,5*h/12), (3*w/4, h/4)]])
 #net = net_gen.generate_grid_network(name="W-shaped Grid", randomness=0.1,
 #                                    cut_shape=[[(w/4,h), (5*w/12,h/3)], [(7*w/12,h), (3*w/4, h/3)]])
 #net = net_gen.generate_grid_network(name="H-shaped Grid", randomness=0.1,
@@ -151,7 +156,7 @@ area = "A: %s x 1000 m^2, ND: %s /1000 m^2, DOI: %s" \
            %(round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1),
              round(doi, 1))
 net.savefig(fname=get_path(folder, filename),   title=net.name,
-            x_label="X-coordinate (m)", y_label="Y-coordinate (m)",
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
             show_labels=True, format="pdf")
 
 
@@ -232,7 +237,7 @@ F2 = 1. * np.arange(len(esterror))/(len(esterror)+1)
 comments = "Runtime(s): "+ str(round(end_time,2)) + "(" + \
                str(round(end_time/nn,3)) + ")"+  \
                ", Nodes Localized: " + str(k) + "/" + str(len(unlocalized)) + \
-               ", Avg. error: " + str(round(err_sum/k, 2)) + \
+               ", Avg. error: " + str(round(err_sum/k, 2)) + ", DOI: " + str(round(doi, 1)) + \
                "<br>Tx/Rx per node: " + str(int(total_tx/nn)) + "/" + \
                                            str(int(total_rx/nn)) + \
                ",  Energy/node (mJ): " + str(round(1000*total_energy/nn, 2)) + \
@@ -324,7 +329,7 @@ plotter.gethtmlLine(range(1,len(xpositions)), [esterror, [row[6] for row in posi
                 fname="Error-"+filename, folder=folder,
                 xlabel="Node", ylabel="meters", labels=['Estimated Errors', 'Good Anchors'],
                 title="Error-"+filename, comment=comments, open=1,
-                plot_options=["color: 'red',", "type: 'areaspline', color: 'grey', visible: false,"])
+                plot_options=["color: 'red',", "type: 'bar', color: 'grey', visible: false,"])
 
 # plotter.gethtmlLine(range(1,len(xpositions)), [consume, [row[1] for row in message_stats]],
 #                 fname="Power-"+filename, folder=folder,

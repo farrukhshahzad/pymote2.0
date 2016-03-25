@@ -38,11 +38,16 @@ class Trilaterate(FloodingUpdate):
             landmarks = node.memory[self.dataKey].keys()
         # calculate estimated distances
         if len(landmarks) >= 3:
-            landmark_distances = [node.memory[self.dataKey][lm][2] *
+            landmark_distances = []
+            landmark_positions = []
+            try :
+                landmark_distances = [node.memory[self.dataKey][lm][2] *
                                   node.memory[self.hopsizeKey]
                                   for lm in landmarks]
-            landmark_positions = [array(node.memory[self.dataKey][lm][:2])
+                landmark_positions = [array(node.memory[self.dataKey][lm][:2])
                                   for lm in landmarks]
+            except:
+                pass
             # take centroid as initial estimation
             pos = average(landmark_positions, axis=0)
             W = diag(ones(len(landmarks)))

@@ -18,7 +18,7 @@ class Trilaterate(FloodingUpdate):
         return node.memory[self.truePositionKey] is not None  # if landmark
 
     def initiator_data(self, node):
-        return node.memory[self.hopsizeKey]
+        return node.memory[self.hopsizeKey] if self.hopsizeKey in node.memory else None
 
     def handle_flood_message(self, node, message):
         if self.hopsizeKey in node.memory:

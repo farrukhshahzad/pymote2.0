@@ -14,7 +14,7 @@ class EnergyModel(object):
     P_CHARGING = 0.0005  # Watts
 
     # idle discharge rate
-    P_IDLE = 0.0001  # Watts
+    P_IDLE = 0.001  # Watts
 
     # transmission rate
     TR_RATE = 250   # kbps

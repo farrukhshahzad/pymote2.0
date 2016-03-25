@@ -145,7 +145,7 @@ filename = net.name.replace("\n", "-")
 # saving topology as PNG image
 net.savefig(fname=get_path(folder, filename),   title=net.name,
             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
-            show_labels=True, format="pdf", label_color='yellow')
+            show_labels=True, format="png", label_color='yellow')
 print net.__len__(), len(net)
 net.reset()
 
@@ -159,7 +159,7 @@ filename = net.name.replace("\n", "-")
 # saving topology as PNG image
 net.savefig(fname=get_path(folder, filename),   title=net.name,
             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
-            show_labels=True, format="pdf", label_color='yellow')
+            show_labels=True, format="png", label_color='yellow')
 print net.__len__(), len(net)
 net.reset()
 
@@ -173,7 +173,7 @@ filename = net.name.replace("\n", "-")
 # saving topology as PNG image
 net.savefig(fname=get_path(folder, filename),   title=net.name,
             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
-            show_labels=True, format="pdf", label_color='yellow')
+            show_labels=True, format="png", label_color='yellow')
 print net.__len__(), len(net)
 net.reset()
 
@@ -187,7 +187,7 @@ filename = net.name.replace("\n", "-")
 # saving topology as PNG image
 net.savefig(fname=get_path(folder, filename),   title=net.name,
             xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
-            show_labels=True, format="pdf", label_color='yellow')
+            show_labels=True, format="png", label_color='yellow')
 print net.__len__(), len(net)
 net.reset()
 

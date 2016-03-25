@@ -21,9 +21,9 @@ def plots(x, y, fname, ymax=None, xmin=None, ymin=None,
           xlabel="X", ylabel="Y", title=None, labels="", more_plots=None, format='pdf',  **kwargs):
 
     title = title or fname
-    colors = ['g', 'k', 'b', 'm', 'r']
+    colors = ['g', 'k', 'b', 'm', 'r', 'c']
     line_styles = ['o-', '-.', '--', 'o:', 'x-']
-    styles = ['go-', 'k-.', 'm.-', 'bx:', 'ro--']
+    styles = ['go-', 'k-.', 'm.-', 'bx:', 'g.:', 'ro--']
     plt.figure(num=None, figsize=(9, 6))
     plt.clf()
 
@@ -31,7 +31,13 @@ def plots(x, y, fname, ymax=None, xmin=None, ymin=None,
         more_plots.insert(0, y)
         for yy in more_plots:
             #plt.plot(x, yy, linestyle=line_styles.pop(), linewidth=1, c=colors.pop())
-            plt.plot(x, yy, styles.pop())
+            try:
+                sty = styles.pop()
+            except:
+                sty = styles[0]
+
+            plt.plot(x, yy, sty)
+            #plt.plot(x, yy)
             #plt.scatter(x, yy, s=10)
         plt.legend(["%s" % m for m in labels], loc="upper left")
     else:
@@ -59,7 +65,7 @@ def plots(x, y, fname, ymax=None, xmin=None, ymin=None,
             d = pdf.infodict()
             d['Title'] = title or kwargs.pop('title', fname)
             d['Author'] = kwargs.pop('author', 'Farrukh Shahzad')
-            d['Subject'] = kwargs.pop('subject','PhD Dissertation Nov 2015 - KFUPM')
+            d['Subject'] = kwargs.pop('subject','PhD Dissertation Dec 2015 - KFUPM')
     else:
         plt.savefig(fname+'.'+format, format=format, transparent=True)
 
@@ -95,7 +101,7 @@ def plot_bars(x, y, fname, ymax=None, xmin=None, ymin=None,
             d = pdf.infodict()
             d['Title'] = title or kwargs.pop('title', fname)
             d['Author'] = kwargs.pop('author', 'Farrukh Shahzad')
-            d['Subject'] = kwargs.pop('subject','PhD Dissertation Nov 2015 - KFUPM')
+            d['Subject'] = kwargs.pop('subject','PhD Dissertation Dec 2015 - KFUPM')
     else:
         plt.savefig(fname+'.'+format, format=format, transparent=True)
 
@@ -117,7 +123,7 @@ def gethtmlLine(x, y, fname, folder="", axis_range={}, labels=None,
     if show_range:
         circle = "allowPointSelect:true, marker: {states: {select: {lineColor: 'red', radius: " + str(show_range) + "}}},"
     series_data = ''
-    k=0
+    k = 0
     for series in y:
         series_data += '''
         {
@@ -167,26 +173,26 @@ $(function () {
         },
         subtitle: {
             text: "''' + comment + '''",
-            style: {fontSize: '14px'}
+            style: {color:'black', fontSize: '18px', fontFamily: 'Times'}
         },
         tooltip: {
             borderRadius: 10,
             crosshairs: [{width: 1, color: 'gray',  dashStyle: 'shortdot'}, {width: 1, color: 'gray',  dashStyle: 'shortdot'}],
             pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: <b>{point.y:.1f}</b><br />',
-            headerFormat: '<span style="font-size: 12px">Node: {point.key}</span><br />',
+            headerFormat: '<span style="font-size: 12px">''' + xlabel + ''' {point.key}</span><br />',
             shared: true
         },
-        xAxis: { // Primary yAxis
+        xAxis: { // Primary xAxis
             minRange : 5,
             min: '''+ json.dumps(axis_range.get('xmin')) + ''', max: '''+ json.dumps(axis_range.get('xmax')) + ''',
-            title: {text: "'''+ xlabel + '''", y: -10}
+            title: {text: "'''+ xlabel + '''", y: -10, style: {color:'black'}}
         },
         yAxis: { // Primary yAxis
             lineWidth: 1,
             minPadding: 0.0,
             maxPadding: 0.0,
             min: '''+ json.dumps(axis_range.get('ymin')) + ''', max: '''+ json.dumps(axis_range.get('ymax')) + ''',
-            title: {text: "'''+ ylabel + '''", x: 10}
+            title: {text: "'''+ ylabel + '''", x: 10, style: {color:'black'}}
         },
         series: [''' + series_data + ''']
     });
@@ -232,7 +238,7 @@ def gethtmlScatter(x, y, fname, folder="", axis_range={}, labels=None,
     show_range = kwargs.pop('show_range', 0)
     circle = ""
     if show_range:
-        circle = "allowPointSelect:true, marker: { states: { select: { lineColor: 'red', radius: " + str(show_range*600/w) + "}}},"
+        circle = "allowPointSelect:true, marker: { states: { select: { lineColor: 'red', radius: " + str(show_range) + "}}},"
 
     series_data = ""
     series_line = ""
@@ -323,7 +329,8 @@ $(function () {
             text: "''' + title + '''"
         },
         subtitle: {
-            text: "''' + comment + '''"
+            text: "''' + comment + '''",
+            style: {color:'black', fontSize: '18px', fontFamily: 'Times'}
         },
         tooltip: {
             borderRadius: 10,
@@ -332,18 +339,18 @@ $(function () {
             headerFormat: '<b>Node: {point.key}</b>, {series.name}<br />',
             shared: true
         },
-        xAxis: [{ // Primary yAxis
+        xAxis: [{ // Primary xAxis
             //minRange : 5,
             gridLineWidth: 1,
             min: '''+ json.dumps(axis_range.get('xmin')) + ''', max: '''+ json.dumps(axis_range.get('xmax')) + ''',
-            title: { text: "'''+ xlabel + '''", y: -5}
+            title: { text: "'''+ xlabel + '''", y: -5, style: {color:'black'}}
         }],
         yAxis: [{ // Primary yAxis
             lineWidth: 1,
             minPadding: 0.0,
             maxPadding: 0.0,
             min: '''+ json.dumps(axis_range.get('ymin')) + ''', max: '''+ json.dumps(axis_range.get('ymax')) + ''',
-            title: {text: "'''+ ylabel + '''", x: 5}
+            title: {text: "'''+ ylabel + '''", x: 5, style: {color:'black'}}
         }],
         series: [''' + series_data + ''' ]
     },
@@ -457,7 +464,8 @@ $(function () {
             text: "''' + title + '''"
         },
         subtitle: {
-            text: "''' + comment + '''"
+            text: "''' + comment + '''",
+            style: {color:'black', fontSize: '18px', fontFamily: 'Times'}
         },
         tooltip: {
             borderRadius: 10,
@@ -466,17 +474,17 @@ $(function () {
             headerFormat: '<b>{series.name}</b><br />',
             shared: true
         },
-        xAxis: [{ // Primary yAxis
+        xAxis: [{ // Primary xAxis
             gridLineWidth: 1,
             min: '''+ json.dumps(axis_range.get('xmin')) + ''', max: '''+ json.dumps(axis_range.get('xmax')) + ''',
-            title: { text: "'''+ xlabel + '''", y: -5}
+            title: { text: "'''+ xlabel + '''", y: -5, style: {color:'black'}}
         }],
         yAxis: [{ // Primary yAxis
             lineWidth: 1,
             minPadding: 0.0,
             maxPadding: 0.0,
             min: '''+ json.dumps(axis_range.get('ymin')) + ''', max: '''+ json.dumps(axis_range.get('ymax')) + ''',
-            title: {text: "'''+ ylabel + '''", x: 5}
+            title: {text: "'''+ ylabel + '''", x: 5, style: {color:'black'}}
         }],
         series: [''' + series_data + ''' ]
     })
