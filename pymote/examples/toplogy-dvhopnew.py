@@ -19,7 +19,7 @@ from numpy import sqrt, amax, amin, std, var, mean
 from pymote import *
 from pymote.conf import global_settings
 from pymote import propagation,energy
-from toplogies import Toplogy
+from toplogies import Topology
 from pymote.utils import plotter
 from pymote.utils.filing import getDateStr, get_path, load_metadata,\
      DATA_DIR, TOPOLOGY_DIR, CHART_DIR, DATETIME_DIR
@@ -109,7 +109,7 @@ for vary in range(5,25,5):
     #     p_anchors = 10
     #net_gen = NetworkGenerator(n_count=n, degree=vary)
     #net = net_gen.generate_homogeneous_network(name='Sparse Random')
-    net_gen = Toplogy(n_count=n, maxn=n, n_min=n, connected=True, doi=doi)
+    net_gen = Topology(n_count=n, maxn=n, n_min=n, connected=True, doi=doi)
     #net = net_gen.generate_grid_network(name="Randomized Grid", randomness=0.5)
     net = net_gen.generate_grid_network(name="O-shaped Grid", randomness=0.1,
                                  cut_shape=[[(w/4,3*h/4), (3*w/4,h/4)]])

@@ -1,4 +1,6 @@
 from pymote.conf import settings
+from pymote.logger import logger
+
 import png
 from itertools import imap
 from numpy import vstack, uint8, ones

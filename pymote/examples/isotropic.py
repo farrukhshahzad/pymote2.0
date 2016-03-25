@@ -6,7 +6,7 @@ from pymote import *
 from pymote.conf import global_settings
 
 from pymote import propagation
-from toplogies import Toplogy
+from toplogies import Topology
 from pymote.utils import plotter
 from pymote.utils.filing import get_path, date2str,\
      DATA_DIR, TOPOLOGY_DIR, CHART_DIR, DATETIME_DIR
@@ -34,10 +34,10 @@ c_range = 10  # communication radii
 net = Network(commRange=c_range, doi=global_settings.DOI)
 h, w = net.environment.im.shape
 
-n = 100  # no. of nodes
-p_anchors = 9 # in %
+n = 300  # total no of nodes
+p_anchors = 10   # No. of anchors in %age
+clusters = (int) (n/15)
 
-clusters = 25
 x_radius = 0.9*global_settings.COMM_RANGE
 y_radius = 0.9*global_settings.COMM_RANGE
 degree = 10
@@ -71,48 +71,65 @@ degree = 10
 # net.reset()
 #
 # print "%s" %na
-Node.cid = 0
-net_gen = Toplogy(n_count=n, connected=True, doi=global_settings.DOI)
-net = net_gen.generate_grid_network(name="Randomized Grid", randomness=0.7, p_anchors=p_anchors)
-#net = net_gen.generate_gaussian_network(name='O-shaped ', clusters=clusters,
-#                                        randomness=1, method='EM',
-#                                        cut_shape=[[(w/4,3*h/4), (3*w/4,h/4)]])
-# net, p = net_gen.generate_cluster_network(name="O",
-#         x_radius=x_radius, y_radius=y_radius,  sector=0.7,
-#         clusters=clusters,  randomness=4.8, method="EM",
-#         cut_shape=[[(w/4,3*h/4), (3*w/4,h/4)]])
+Node.cid = 1
+net_gen = Topology(n_count=n, connected=True, doi=global_settings.DOI)
+net = net_gen.generate_grid_network(name="Grid", randomness=2.0, p_anchors=None)
+
+#net = net_gen.generate_cluster_network(name="8",
+#          x_radius=x_radius, y_radius=y_radius,  sector=1.0,
+#          cluster_divide=clusters,  randomness=4.8,
+#          cut_shape=[[(w/4,3*h/4), (3*w/4,7*h/12)],
+#                    [(w/4,5*h/12), (3*w/4, h/4)]])
+
+#net, p = net_gen.generate_cluster_network(name="8",
+#         x_radius=x_radius, y_radius=y_radius,  sector=1,
+#         clusters=clusters,  randomness=2.8, method="EM",
+#         cut_shape=[[(w/4,3*h/4), (3*w/4,7*h/12)],
+#                   [(w/4,5*h/12), (3*w/4, h/4)]])
+avg_deg = net.avg_degree()
+na = net.__len__()
+print na, avg_deg
+
+
 # net, p = net_gen.generate_cluster_network(name="S",
 #         x_radius=x_radius, y_radius=y_radius,  sector=0.7,
 #         clusters=clusters,  randomness=4.8, method="EM",
 #         cut_shape=[[(w/4,3*h/4), (w,7*h/12)], [(0,5*h/12), (3*w/4, h/4)]])
-n_anchors = net_gen.anchors
 node=net.nodes()[0]
 
 # saving topology as PNG image
-avg_deg = net.avg_degree()
-na = net.__len__()
+
 #n_anchors = (int)(na *  p_anchors/100.0)
 net.name = "%s - $N=$%s(%s), $D=$%s, $R=$%s m\n$A=$%s$\\times 10^3m^2$, $N_D=$%s$/10^3.m^2$, %s=%s" \
-           % (net_gen.name, na, n_anchors, round(avg_deg,1), round(node.commRange,1),
+           % (net_gen.name, na, clusters, round(avg_deg,1), round(node.commRange,1),
               round(net_gen.area/1000.0, 2), round(net_gen.net_density*1000, 1),
               global_settings.CHANNEL_TYPE, global_settings.DOI)
-filename = (net.name.split("\n")[0]).replace("$","")+"-"+\
-           global_settings.CHANNEL_TYPE+"="+str(global_settings.DOI)
-net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
-            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
-            show_labels=True, format="pdf")
+filename = (net.name.split("\n")[0]).replace("$","")
+#net.savefig(fname=get_path(TOPOLOGY_DIR, filename),   title=net.name,
+#            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
+#            show_labels=True, format="png")
 
+net2, p = net_gen.get_clusters(net, clusters=clusters, method="EM")
+node = net2.nodes()[int(n/2)]
+net2.remove_node(node)
+net2.savefig(fname=get_path(TOPOLOGY_DIR, filename+"-anchors"),   title=net.name,
+            xlabel="X-coordinate (m)", ylabel="Y-coordinate (m)",
+            show_labels=True, format="png")
+n_anchors = net_gen.anchors
+avg_deg = net2.avg_degree()
+na = net2.__len__()
 print na, avg_deg, node.commRange, net_gen.area, net_gen.net_density
 
-from networkx import  *
+from networkx import *
 import networkx.algorithms.approximation
 
 print networkx.info(net)
-print networkx.edges(net)
+#print networkx.edges(net)
 #print networkx.algorithms.approximation.k_components(net)
 print networkx.algorithms.approximation.average_clustering(net)
 
-net.save_json(get_path(TOPOLOGY_DIR, filename+".json"), scale=(9, 5))
+net.name = filename
+net.save_json(get_path(TOPOLOGY_DIR, filename+".json"), scale=(6, 5))
 
 net.reset()
 

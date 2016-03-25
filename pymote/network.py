@@ -132,7 +132,7 @@ class Network(Graph):
         del self.pos[node]
         del self.labels[node]
         node.network = None
-        logger.debug('Node with id %d is removed.' % node.id)
+        logger.info('Node with id %d is removed.' % node.id)
 
     def add_node(self, node=None, pos=None, ori=None, commRange=None, find_random=False):
         """
@@ -177,7 +177,9 @@ class Network(Graph):
                             'Random' if got_random else ''))
             self.recalculate_edges([node])
         else:
-            logger.error('Given position is not free space.')
+            Node.cid -= 1
+            logger.error('Given position is not free space. [%s] %s' % (Node.cid, pos))
+            node = None
         return node
 
     def node_by_id(self, id_):
@@ -422,23 +424,41 @@ class Network(Graph):
 
     def save_json(self, filename, scale=(1, 1)):
         data = json_graph.node_link_data(self)
-        print data
+        data.pop('nodes')
+        data.pop('links')
+
+
         #adj = json_graph.adjacency_data(self)
         #print adj
         h, w = self.environment.im.shape
         nodes = []
         colors = {'C': 'red', 'B': 'green', 'N': 'blue'}
-        shape = {'C': 'circle', 'B': 'circle', 'N': 'square'}
-        size = {'C': 15, 'B': 10, 'N': 5}
+        shapes = {'C': 'circle', 'B': 'circle', 'N': 'square'}
+        sizes = {'C': 15, 'B': 10, 'N': 10}
+        k=0
         for node in self.nodes():
-            nodes.append({'name': str(node.id), 'id': node.id, "size":size[node.type],
+            node.id = k
+            nodes.append({'name': str(node.id), 'id': node.id, "size":sizes[node.type],
                 "x": round(self.pos[node][0]*scale[0]), "color": colors[node.type],
-                "y": (h - round(self.pos[node][1])*scale[1]), "shape": shape[node.type]
+                "y": (h - round(self.pos[node][1]))*scale[1], "shape": shapes[node.type]
                 })
-        data.pop('nodes')
+            k += 1
+
+        data['graph']['r'] = int(node.commRange * scale[0])
+        data['graph']['width'] = int(w * scale[0])
+        data['graph']['height'] = int (h * scale[1])
+        data['graph']['drag'] = True
+        name = data['graph']['name']
+
+        data['graph']['name'] = (name.split("\n")[0]).replace("$","")
+        edges = nx.edges(self)
+        edge_list = []
+        for edge in edges:
+            edge_list.append({'source': edge[0].id, 'target': edge[1].id})
         #print data
         #print nodes
         data['nodes'] = nodes
+        data['links'] = edge_list
         with open(filename, 'w') as outfile:
             json.dump(data, outfile, indent=4)
 
