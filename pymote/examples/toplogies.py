@@ -4,11 +4,9 @@ from pymote import *
 from pymote.sensor import TruePosSensor
 from pymote import gmm
 
-from numpy import sign, sqrt, array, pi, sin, cos
-from numpy.random import rand
 from matplotlib.pylab import *
 from pypr.clustering.kmeans import *
-#import pypr.clustering.gmm as gmm
+
 
 tests = 1
 def divide_equally(n):
@@ -227,16 +225,13 @@ class Topology(NetworkGenerator):
                 inside = True
                 if cut_shape:
                     for box in cut_shape:
-                        #print box[0], box[1],  xpos, ypos
                         if xpos-nw >= box[0][0] and xpos+nh <= box[1][0] and \
                            ypos+nh <= box[0][1] and ypos-nh >= box[1][1]:
-                            #print "not in"
                             inside = False
                 if inside:
                     k += 1
 
                     node = Node(**self.kwargs)
-                    #print node.id, (xpos, ypos)
                     if (f_anchors and node.id % f_anchors==0):  # anchor nodes
                         node.compositeSensor = (TruePosSensor,)
                         node.type = 'C'  # Anchors
@@ -290,10 +285,8 @@ class Topology(NetworkGenerator):
             inside = True
             if cut_shape:
                     for box in cut_shape:
-                        #print box[0], box[1],  xpos, ypos
                         if xpos >= box[0][0] and xpos <= box[1][0] and \
                                         ypos <= box[0][1] and ypos >= box[1][1]:
-                            #print "not in"
                             inside = False
             if inside:
                 node = Node(**self.kwargs)
@@ -352,7 +345,6 @@ class Topology(NetworkGenerator):
                     inside = True
                     if cut_shape:
                         for box in cut_shape:
-                                #print box[0], box[1],  xpos, ypos
                            if xpos >= box[0][0] and xpos <= box[1][0] and \
                                  ypos <= box[0][1] and ypos >= box[1][1]:
                                inside = False
