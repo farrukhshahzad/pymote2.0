@@ -11,25 +11,23 @@ import networkx as nx
 from networkx.readwrite import json_graph
 
 from pymote.logger import logger
-from pymote.conf import settings, global_settings
+from pymote.conf import settings
 from environment import Environment
 from channeltype import ChannelType, Doi
 from node import Node
 from pymote.energy import EnergyModel
 from pymote import propagation
 from algorithm import Algorithm
-from pymote.sensor import CompositeSensor, TruePosSensor
+from pymote.sensor import CompositeSensor
 from pymote.utils.helpers import pymote_equal_objects
+
 
 class Network(Graph):
 
-    global fly
-
     def __init__(self, environment=None, channelType=None, algorithms=(),
                  networkRouting=True, propagation_type=2, **kwargs):
-        global fly
+
         Graph.__init__(self)
-        fly = 1
         self._environment = environment or Environment()
         # assert(isinstance(self.environment, Environment))
         self.channelType = channelType or ChannelType(self._environment)
