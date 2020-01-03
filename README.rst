@@ -33,9 +33,9 @@ Arbula, D. and Lenac, K.: *Pymote: High Level Python Library for Event-Based Sim
 
 Pymote 2.0
 =========
+PhD dissertation work by Farrukh Shahzad.
 
-Under development at KFUPM, KSA
-Farrukh Shahzad
+F. Shahzad, TR Sheltami, EM Shakshuki:  *DV-maxHop: A fast and accurate range-free localization algorithm for anisotropic wireless networks*, IEEE Transactions on Mobile Computing, 2016 `https://ieeexplore.ieee.org/abstract/document/7756390/`
 
 A.	Propagation Model
 ---------------------
@@ -43,7 +43,7 @@ We implemented two basic radio propagation models and the commonly used shadowin
 
 B.	Energy consumption Model
 ---------------------
-In our extended framework, the energy model object is implemented as a node attribute, which represents the level of energy in a node. Each node can be configured to be powered by external source (unlimited power), Battery (default) or energy harvesting (EH) sources. The energy in a node has an initial value which is the level of energy the node has at the beginning of the simulation. It also has a given energy consumption for every packet it transmits and receives which is a function of packet size, transmission rate and transmit (receive) power. The model also supports idle or constant energy discharge due to hardware/ microcontroller consumption and energy charge for energy harvesting based WSN. During simulation, each node’s available energy is recomputed every second based on the charging and/or discharging rate. If it drops below minimum energy required to operate (Emin) then that node assumed to be dead (not available for communication) until energy reaches above Emin again later in simulation (for EH nodes). Table II lists parameters available for energy module which can be set differently for each node. The energy object keeps track of the energy available (for battery-operated or energy harvested nodes) and total energy consumption.
+In our extended framework, the energy model object is implemented as a node attribute, which represents the level of energy in a node. Each node can be configured to be powered by external source (unlimited power), Battery (default) or energy harvesting (EH) sources. The energy in a node has an initial value which is the level of energy the node has at the beginning of the simulation. It also has a given energy consumption for every packet it transmits and receives which is a function of packet size, transmission rate and transmit (receive) power. The model also supports idle or constant energy discharge due to hardware/ microcontroller consumption and energy charge for energy harvesting based WSN. During simulation, each nodeâ€™s available energy is recomputed every second based on the charging and/or discharging rate. If it drops below minimum energy required to operate (Emin) then that node assumed to be dead (not available for communication) until energy reaches above Emin again later in simulation (for EH nodes). Table II lists parameters available for energy module which can be set differently for each node. The energy object keeps track of the energy available (for battery-operated or energy harvested nodes) and total energy consumption.
 
 C.	Mobility Model
 ---------------------
