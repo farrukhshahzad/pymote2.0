@@ -35,7 +35,7 @@ Pymote 2.0
 =========
 PhD dissertation work by Farrukh Shahzad.
 
-F. Shahzad, TR Sheltami, EM Shakshuki:  *DV-maxHop: A fast and accurate range-free localization algorithm for anisotropic wireless networks*, IEEE Transactions on Mobile Computing, 2016 `https://ieeexplore.ieee.org/abstract/document/7756390/`
+Shahzad, F., TR Sheltami, EM Shakshuki:  *DV-maxHop: A fast and accurate range-free localization algorithm for anisotropic wireless networks*, IEEE Transactions on Mobile Computing, 2016 `link <https://ieeexplore.ieee.org/abstract/document/7756390/>`_
 
 A.	Propagation Model
 ---------------------
