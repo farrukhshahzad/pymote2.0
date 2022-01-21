@@ -1,4 +1,4 @@
-ipython==0.13.1
+ipython==7.16.3
 matplotlib==1.4.3
 networkx==1.7
 numpy==1.6.2
